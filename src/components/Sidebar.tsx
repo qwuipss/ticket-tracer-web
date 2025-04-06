@@ -1,7 +1,7 @@
 function Sidebar() {
   return (
     <aside className="sidebar">
-        <img className="sidebar-logo" src="imgs\Лого.svg"></img>
+        <img className="sidebar-logo" src="imgs\logo.svg"></img>
         <p className="sidebar-name">
                 Alfaproject<br></br>
                 Проект по<br></br>
