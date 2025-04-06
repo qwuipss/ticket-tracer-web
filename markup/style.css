@@ -12,7 +12,7 @@ body {
   margin: 0 0.5% 37px 303px;
   padding: 10px;
   height: 77px;
-  width: 86%;
+  width: 81%;
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -128,7 +128,7 @@ body {
   flex-wrap: wrap;
   flex-flow: column nowrap;
   background-color: #34C6CD;
-  width: 11%;
+  width: 15%;
   height: 100vh;
   position: fixed;
   top: 0;
