@@ -8,7 +8,7 @@ function Sidebar() {
                 разработке ПО
         </p>
         <ul>
-            <li><a href="#">Доска</a></li>
+            <li className="chosen-side"><a href="#">Доска</a></li>
             <li><a href="#">Хронология</a></li>
             <li><a href="#">Календарь</a></li>
             <li><a href="#">Список</a></li>

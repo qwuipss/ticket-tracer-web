@@ -16,7 +16,7 @@ function Main() {
                             <option>В работе</option>
                             <option>Готово</option>
                         </select>
-                        <input className="search-bar" type="text" placeholder="Поиск"></input>
+                        <input className="filter-search-bar" type="text" placeholder="Поиск"></input>
                     </div>
                 </div>
                 <div className="members-settings">
@@ -36,30 +36,30 @@ function Main() {
                 <div className="task-column">
                     <h2>К выполнению</h2>
                     <div className="task-card">
-                        <p className="task-name">Добавить блок описания</p>
+                        <p className="task-name-table">Добавить блок описания</p>
                         <div className="task-info">
-                            <img src="../imgs/user.png"></img>
-                            <span className="task-id">AI-01</span>
+                            <img className="task-card-photo" src="../imgs/user.png"></img>
+                            <span className="task-id-table">AI-01</span>
                         </div>
                     </div>
                 </div>
                 <div className="task-column">
                     <h2>В работе</h2>
                     <div className="task-card">
-                        <p className="task-name">Посмотреть аналоги</p>
+                        <p className="task-name-table">Посмотреть аналоги</p>
                         <div className="task-info">
-                            <img src="../imgs/user.png"></img>
-                            <span className="task-id">AI-02</span>
+                            <img className="task-card-photo" src="../imgs/user.png"></img>
+                            <span className="task-id-table">AI-02</span>
                         </div>
                     </div>
                 </div>
                 <div className="task-column">
                     <h2>Готово</h2>
                     <div className="task-card">
-                        <p className="task-name">Продумать схему БД</p>
+                        <p className="task-name-table">Продумать схему БД</p>
                         <div className="task-info">
-                            <img src="../imgs/user.png"></img>
-                            <span className="task-id">AI-03</span>
+                            <img className="task-card-photo" src="../imgs/user.png"></img>
+                            <span className="task-id-table">AI-03</span>
                         </div>
                     </div>
                 </div>

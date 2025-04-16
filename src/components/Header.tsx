@@ -2,12 +2,12 @@ function Sidebar() {
     return (
         <header className="header">
             <nav className="navbar">
-                <div>
+                <div className="">
                     <ul className="nav-links">
                         <li><a href="#">Проекты<img src="../imgs/arrow.svg"></img></a></li>
                         <li><a href="#">Мои задачи<img src="../imgs/arrow.svg"></img></a></li>
                         <li><a href="#">Ещё<img src="../imgs/arrow.svg"></img></a></li>
-                        <li><a href="#" className="create-btn">Создать</a></li>
+                        <li><button className="create-btn">Создать</button></li>
                     </ul>
                 </div>
                 <div className="nav-side">
