@@ -116,7 +116,7 @@
     max-height: 10vh;
 }
 
-.side-info {
+.card-side-info {
     display: flex;
     flex-direction: column;
     width: 30vw;
@@ -202,7 +202,11 @@
     background-position: right 0.7vw top 50%;
     background-size: 0.4vw auto;
     margin-bottom: 2vh;
-  }
+}
+
+.card-filter:hover {
+    background-color: #53DCFB;
+}
 
 .task-info-table {
     margin-bottom: 2vh;

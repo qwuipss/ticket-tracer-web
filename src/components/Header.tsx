@@ -1,4 +1,4 @@
-function Sidebar() {
+const Sidebar = () => {
     return (
         <header className="header">
             <nav className="navbar">

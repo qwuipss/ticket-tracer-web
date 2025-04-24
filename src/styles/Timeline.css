@@ -1,0 +1,148 @@
+.timeline {
+    margin: 2vh 43px 10px 14vw;
+    padding: 20px;
+}
+
+.timeline-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeline-header h1 {
+    margin: 0;
+}
+
+.timeline-header {
+    width: 500px;
+    display: flex;
+    margin-bottom: 0;
+    justify-content: space-between;
+}
+
+.timeline-members {
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+    align-self: flex-start;
+}
+
+.side-info {
+    margin-left: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.timeline-units {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    height: 100%;
+    width: 12vw;
+    min-width: 216px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: var(--, rgba(83, 220, 251, 0.10));
+    box-shadow: 0px 0px 10.5px 0px rgba(83, 220, 251, 0.40) inset;
+}
+
+.timeline-units li {
+    font-family: Inter;
+    font-size: 1.2vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    border-radius: 6px;
+    height: 100%;
+    padding: 6px;
+}
+
+.timeline-units li:hover {
+    background-color: #89e9ff;
+}
+
+.unit-active {
+    background-color: #34C6CD;
+}
+
+.save-btn, .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--, #000);
+
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.timeline-filter {
+    display: flex;
+    align-items: center;
+}
+
+.timeline-filter select {
+    padding: 7px 10px;
+    width: 8.5vw;
+    min-width: 215px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    margin-left: 0;
+    margin-right: 33px;
+    background-color: #34C6CD;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    appearance: none;
+    background-image: url(./imgs/arrow.svg);
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 0.65rem auto;
+    cursor: pointer;
+}
+
+.timeline-filter select:hover {
+    background-color: #53aafb;
+}
+
+.timeline-filter-search-bar {
+    display: flex;
+    height: 1.5vh;
+    width: 13vw;
+    max-height: 30px;
+    padding: 10px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 0.5em;
+    border: 2px solid #53DCFB;
+    background: #FFF;
+    font-family: "Nunito Sans";
+    font-size: 100%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.timeline-filter-search-bar:hover {
+    border-color: #000;
+}

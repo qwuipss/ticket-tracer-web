@@ -1,16 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Main from "./components/Main";
-import TaskInfoCard from "./components/TaskInfoCard";
+import Board from './components/Board';
+import Timeline from './components/Timeline';
+import Calendar from './components/Calendar';
+import Summary from './components/Summary';
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Sidebar />
-      <Main />
-      <TaskInfoCard />
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <Sidebar />
+        <Routes>
+          <Route path="/board" element={<Board />} />
+          <Route path="/timeline" element={<Timeline />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/summary" element={<Summary />} />
+          <Route path="/" element={<Board />} />
+        </Routes>
+      </div>
+    </Router>
   );
   
 }

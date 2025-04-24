@@ -1,20 +1,27 @@
-function TaskInfoCard() {
+import { Task } from "../types/Task";
+
+interface TaskInfoCardProps {
+  task: Task;
+  onClose: () => void;
+}
+
+const TaskInfoCard = ({ task, onClose }: TaskInfoCardProps) => {
     return (
       <div>
         <div className="task-info-substrate"></div>
         <div className="task-info-card">
           <div className="base-info">
             <p className="task-id">
-              Al-01
+              {task.id}
             </p>
             <h1 className="task-name">
-              Добавить блок описания
+              {task.name}
             </h1>
             <h2 className="task-desc-header">
               Описание задачи
             </h2>
             <p className="task-desc">
-              Описание задачиОписание задачиОписание задачиОписание задачиОписание задачиОписание задачиОписание задачиОписание задачи
+              {task.description}
             </p>
             <button className="task-add-btn">
               Добавить <img src="./imgs/dark_plus.svg"></img>
@@ -27,11 +34,11 @@ function TaskInfoCard() {
               <textarea className="task-comments" placeholder="Написать комментарий..."></textarea>
             </div>
           </div>
-          <div className="side-info">
+          <div className="card-side-info">
             <div className="task-card-btns">
               <button className="share-btn"><img src="../imgs/share.svg"></img>Поделиться</button>
               <button className="action-btn"><img src="../imgs/ellipsis.svg"></img>Действия</button>
-              <img className="close" src="./imgs/cross.svg"></img>
+              <img className="close" src="./imgs/cross.svg" onClick={onClose}></img>
             </div>
             <select className="card-filter">
               <option>Отсутствует</option>
