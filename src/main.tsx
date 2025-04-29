@@ -6,10 +6,15 @@ import './styles/Header.css'
 import './styles/Sidebar.css'
 import './styles/Board.css'
 import './styles/Timeline.css'
+import './styles/Auth.css'
+import './styles/ErrorMessage.css'
 import App from './App.tsx'
+import AuthProvider from './components/AuthProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <AuthProvider isSignedIn={true}>
+      <App/>
+    </AuthProvider>
   </StrictMode>,
 )

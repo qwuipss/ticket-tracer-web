@@ -1,0 +1,83 @@
+.calendar-container {
+  max-width: 1000px;
+  margin: 20px;
+  margin-left: 500px;
+  font-family: Arial, sans-serif;
+}
+
+.calendar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #f5f5f5;
+}
+
+.calendar-grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-grid th, .calendar-grid td {
+  width: 14.28%;
+  height: 120px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.calendar-day {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.calendar-day:hover {
+  background: #f9f9f9;
+}
+
+.other-month {
+  background-color: #f8f8f8;
+  color: #999;
+}
+
+.today {
+  background-color: #e3f2fd !important;
+}
+
+.day-number {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.tasks-list {
+  min-height: 80px;
+}
+
+.task-item {
+  padding: 4px;
+  margin: 2px 0;
+  background: #e8f5e9;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.task-item.completed {
+  background: #f0f0f0;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.task-input {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.task-input input {
+  padding: 8px;
+  margin-right: 10px;
+  width: 300px;
+}

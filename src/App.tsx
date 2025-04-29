@@ -1,27 +1,44 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import Board from './components/Board';
-import Timeline from './components/Timeline';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import Auth from './components/Auth';
+import Login from './components/Login';
 import Calendar from './components/Calendar';
+import Timeline from './components/Timeline';
+import Board from './components/Board';
+import ProtectedRoute from './components/ProtectedRoute';
+import AuthLayout from './components/AuthLayout';
+import ErrorMessage from './components/ErrorMessage';
 import Summary from './components/Summary';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AuthLayout />,
+    children: [
+      { path: "auth", element: <Auth /> },
+      { path: "login", element: <Login /> },
+      { index: true, element: <Navigate to="/auth" replace /> }
+    ]
+  },
+  {
+    path: "dashboard",
+    element: <ProtectedRoute><Dashboard /></ProtectedRoute>,
+    children: [
+      { path: "calendar", element: <Calendar /> },
+      { path: "gantt", element: <Timeline /> },
+      { path: "board", element: <Board /> },
+      { path: "summary", element: <Summary /> },
+    ]
+  },
+  {
+    path: "*",
+    element: <ErrorMessage />
+  }
+]);
+
+
 function App() {
-  return (
-    <Router>
-      <div className="app">
-        <Header />
-        <Sidebar />
-        <Routes>
-          <Route path="/board" element={<Board />} />
-          <Route path="/timeline" element={<Timeline />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/summary" element={<Summary />} />
-          <Route path="/" element={<Board />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
   
 }
 

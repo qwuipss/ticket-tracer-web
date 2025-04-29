@@ -1,0 +1,162 @@
+.auth-page {
+    z-index: 9999;
+    overflow: hidden;
+    position: relative;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 6vh;
+    align-items: center;
+}
+
+.auth-form {
+    display: flex;
+    font-family: Nunito Sans;
+    margin-top: 1vh;
+    flex-direction: column;
+}
+
+.auth-logo {
+    width: 15vw;
+    margin: auto;
+}
+
+.auth-header {
+    font-family: Unbounded;
+    font-size: 3vh;
+    margin: auto;
+    margin-top: 5vh;
+}
+
+form label {
+    font-weight: 700;
+    font-size: 2vh;
+    margin-top: 2vh;
+    margin-bottom: 0.7vh;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1vh;
+    position: relative;
+}
+
+.auth-input {
+    border-radius: 0.7vh;
+    border: 0.1vw solid #53DCFB;
+    background: #FFF;
+    height: 3vh;
+    padding-left: 1vh;
+    cursor: text;
+    font-size: 1.2vh;
+    width: 30vw;
+}
+
+.error-message {
+  color: #F66F6F;
+  font-size: 1.1vh;
+  position: absolute;
+  bottom: -2vh;
+}
+
+.auth-input::placeholder {
+    color: rgba(0, 0, 0, 0.30);
+}
+
+.auth-input.error {
+    border: 0.1vw solid #F66F6F;
+}
+  
+.auth-input.error:focus {
+    outline-color: #F66F6F;
+}
+
+.submit-button {
+    margin-top: 4vh;
+    font-family: Unbounded;
+    border: none;
+    border-radius: 1vh; 
+    font-size: 2.5vh;
+    height: 5vh;
+    align-self: center;
+    text-align: center;
+    max-width: wrap;
+    padding: 1vh 1.5vw;
+    background-color: #34C6CD;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: rgba(83, 220, 251, 0.50);
+}
+
+.google-login {
+    align-self: center;
+    font-size: 2vh;
+    font-weight: 600;
+    margin-top: 3vh;
+}
+
+.decor {
+    width: 15%;
+}
+
+.to-login {
+    color: black;
+    margin: auto;
+    margin-top: 2vh;
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.to-auth {
+    color: black;
+    margin: auto;
+    margin-top: 2vh;
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.bg1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.bg2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.bg3 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.bg4 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+@media (max-width: 1500px) {
+    .decor {
+        opacity: 0.6;
+    }
+}
+
+@media (max-width: 760px) {
+    .decor {
+        display: none; /* Скрыть на очень маленьких экранах */
+    }
+}

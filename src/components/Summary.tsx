@@ -1,4 +1,4 @@
-function Summary() {
+const Summary = () => {
     return (
         <main className="main-content">
             <div className="project-info">
@@ -21,10 +21,10 @@ function Summary() {
                 <div className="members-settings">
                     <p>Участники</p>
                     <div className="members">
-                        <img src="../imgs/user.png"></img>
-                        <img src="../imgs/user.png"></img>
-                        <img src="../imgs/user.png"></img>
-                        <img src="../imgs/user.png"></img>
+                        <img src="../imgs/user.svg"></img>
+                        <img src="../imgs/user.svg"></img>
+                        <img src="../imgs/user.svg"></img>
+                        <img src="../imgs/user.svg"></img>
                     </div>
                     <img src="../imgs/ellipsis.svg"></img>
                     <img src="../imgs/plus.svg"></img>
