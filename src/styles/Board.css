@@ -64,7 +64,7 @@
     font-weight: 800;
     line-height: normal;
     appearance: none;
-    background-image: url(./imgs/arrow.svg);
+    background-image: url(/imgs/arrow.svg);
     background-repeat: no-repeat;
     background-position: right 0.7rem top 50%;
     background-size: 0.65rem auto;

@@ -197,7 +197,7 @@
     line-height: normal;
     cursor: pointer;
     appearance: none;
-    background-image: url(./imgs/arrow.svg);
+    background-image: url(/imgs/arrow.svg);
     background-repeat: no-repeat;
     background-position: right 0.7vw top 50%;
     background-size: 0.4vw auto;

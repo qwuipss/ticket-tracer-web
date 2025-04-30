@@ -7,10 +7,10 @@ interface ITask {
 }
 
 type User = {
-    email: string,
-    name: string,
-    surname: string,
-    password: string
+    email: string;
+    name: string;
+    surname: string;
+    password: string;
 };
 
 type AuthContextType = {
@@ -23,13 +23,13 @@ type ProtectedRouteProps = PropsWithChildren;
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-export const timelines = ['Недели', 'Месяцы', 'Кварталы']
+export const timelines = ["Недели", "Месяцы", "Кварталы"];
 
 export const pages = [
-    { name: 'Доска', link: '/board' }, 
-    { name: 'Хронология', link: '/timeline' }, 
-    { name: 'Календарь', link: '/calendar' }, 
-    { name: 'Сводка', link: '/summary' }, 
-]
+    { name: "Доска", link: "/board" },
+    { name: "Хронология", link: "/timeline" },
+    { name: "Календарь", link: "/calendar" },
+    { name: "Сводка", link: "/summary" },
+];
 
-export type { ITask, ProtectedRouteProps, User, AuthContextType }
+export type { ITask, ProtectedRouteProps, User, AuthContextType };

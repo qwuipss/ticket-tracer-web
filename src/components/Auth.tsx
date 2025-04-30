@@ -1,88 +1,88 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
 const Auth = () => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        email: '',
-        name: '',
-        surname: '',
-        password: '',
-        repeatedPassword: ''
+        email: "",
+        name: "",
+        surname: "",
+        password: "",
+        repeatedPassword: "",
     });
 
     const [errors, setErrors] = useState({
-        email: '',
-        name: '',
-        surname: '',
-        password: '',
-        repeatedPassword: ''
+        email: "",
+        name: "",
+        surname: "",
+        password: "",
+        repeatedPassword: "",
     });
 
     const validateForm = () => {
         let isValid = true;
         const newErrors = {
-            email: '',
-            name: '',
-            surname: '',
-            password: '',
-            repeatedPassword: ''
+            email: "",
+            name: "",
+            surname: "",
+            password: "",
+            repeatedPassword: "",
         };
-    
+
         if (!formData.email) {
-            newErrors.email = 'Поле обязательно для заполнения';
+            newErrors.email = "Поле обязательно для заполнения";
             isValid = false;
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Неверный формат email';
+            newErrors.email = "Неверный формат email";
             isValid = false;
         } else if (formData.email.length > 64) {
-            newErrors.email = 'Слишком длинный адрес email';
+            newErrors.email = "Слишком длинный адрес email";
             isValid = false;
         }
-    
+
         if (!formData.name) {
-            newErrors.name = 'Поле обязательно для заполнения';
+            newErrors.name = "Поле обязательно для заполнения";
             isValid = false;
         } else if (formData.name.length < 2) {
-            newErrors.name = 'Имя должно содержать не менее 2 символов';
+            newErrors.name = "Имя должно содержать не менее 2 символов";
             isValid = false;
-        }   else if (formData.name.length > 32) {
-            newErrors.name = 'Слишком длинное имя';
+        } else if (formData.name.length > 32) {
+            newErrors.name = "Слишком длинное имя";
             isValid = false;
         }
 
         if (!formData.surname) {
-            newErrors.surname = 'Поле обязательно для заполнения';
+            newErrors.surname = "Поле обязательно для заполнения";
             isValid = false;
         } else if (formData.surname.length < 2) {
-            newErrors.surname = 'Фамилия должна содержать не менее 2 символов';
+            newErrors.surname = "Фамилия должна содержать не менее 2 символов";
             isValid = false;
-        }   else if (formData.surname.length > 32) {
-            newErrors.surname = 'Слишком длинная фамилия';
+        } else if (formData.surname.length > 32) {
+            newErrors.surname = "Слишком длинная фамилия";
             isValid = false;
         }
-    
+
         if (!formData.password) {
-            newErrors.password = 'Поле обязательно для заполнения';
+            newErrors.password = "Поле обязательно для заполнения";
             isValid = false;
         } else if (formData.password.length < 8) {
-            newErrors.password = 'Пароль должен содержать не менее 8 символов';
+            newErrors.password = "Пароль должен содержать не менее 8 символов";
             isValid = false;
         } else if (formData.password.length > 32) {
-            newErrors.password = 'Пароль должен содержать не более 32 символов';
+            newErrors.password = "Пароль должен содержать не более 32 символов";
             isValid = false;
         }
 
         if (!formData.repeatedPassword) {
-            newErrors.repeatedPassword = 'Поле обязательно для заполнения';
+            newErrors.repeatedPassword = "Поле обязательно для заполнения";
             isValid = false;
         } else if (formData.password !== formData.repeatedPassword) {
-            newErrors.repeatedPassword = 'Пароли не совпадают';
+            newErrors.repeatedPassword = "Пароли не совпадают";
             isValid = false;
         }
-    
+
         setErrors(newErrors);
         return isValid;
     };
@@ -91,23 +91,28 @@ const Auth = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (validateForm()) {
-            login({ email: formData.email, name: formData.name, surname: formData.surname, password: formData.password })
-            navigate('/app/dashboard');
+            login({
+                email: formData.email,
+                name: formData.name,
+                surname: formData.surname,
+                password: formData.password,
+            });
+            navigate("/app/dashboard");
         }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }));
 
-        setErrors(prev => ({
+        setErrors((prev) => ({
             ...prev,
-            [name]: ''
+            [name]: "",
         }));
     };
 
@@ -119,13 +124,23 @@ const Auth = () => {
             <img className="decor bg4" src="../imgs/bg5.svg"></img>
             <main className="auth-page">
                 <div className="auth-container">
-                    <img className="auth-logo" src='../imgs/logo.svg' alt="Логотип"/>
+                    <img
+                        className="auth-logo"
+                        src="../imgs/logo.svg"
+                        alt="Логотип"
+                    />
                     <h1 className="auth-header">Регистрация</h1>
-                    <form className="auth-form" onSubmit={handleSubmit} noValidate>
+                    <form
+                        className="auth-form"
+                        onSubmit={handleSubmit}
+                        noValidate
+                    >
                         <div className="input-group">
                             <label htmlFor="email">Электронная почта</label>
-                            <input 
-                                className={`auth-input ${errors.email ? 'error' : ''}`}
+                            <input
+                                className={`auth-input ${
+                                    errors.email ? "error" : ""
+                                }`}
                                 id="email"
                                 name="email"
                                 placeholder="ivanivan@yandex.ru"
@@ -133,13 +148,19 @@ const Auth = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                             />
-                            {errors.email && <div className="error-message">{errors.email}</div>}
+                            {errors.email && (
+                                <div className="error-message">
+                                    {errors.email}
+                                </div>
+                            )}
                         </div>
 
                         <div className="input-group">
                             <label htmlFor="name">Имя</label>
-                            <input 
-                                className={`auth-input ${errors.name ? 'error' : ''}`}
+                            <input
+                                className={`auth-input ${
+                                    errors.name ? "error" : ""
+                                }`}
                                 id="name"
                                 name="name"
                                 placeholder="Логин"
@@ -147,13 +168,19 @@ const Auth = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                             />
-                            {errors.name && <div className="error-message">{errors.name}</div>}
+                            {errors.name && (
+                                <div className="error-message">
+                                    {errors.name}
+                                </div>
+                            )}
                         </div>
 
                         <div className="input-group">
                             <label htmlFor="surname">Фамилия</label>
-                            <input 
-                                className={`auth-input ${errors.surname ? 'error' : ''}`}
+                            <input
+                                className={`auth-input ${
+                                    errors.surname ? "error" : ""
+                                }`}
                                 id="surname"
                                 name="surname"
                                 placeholder="Логин"
@@ -161,13 +188,19 @@ const Auth = () => {
                                 value={formData.surname}
                                 onChange={handleChange}
                             />
-                            {errors.surname && <div className="error-message">{errors.surname}</div>}
+                            {errors.surname && (
+                                <div className="error-message">
+                                    {errors.surname}
+                                </div>
+                            )}
                         </div>
 
                         <div className="input-group">
                             <label htmlFor="password">Пароль</label>
-                            <input 
-                                className={`auth-input ${errors.password ? 'error' : ''}`}
+                            <input
+                                className={`auth-input ${
+                                    errors.password ? "error" : ""
+                                }`}
                                 id="password"
                                 name="password"
                                 placeholder="Пароль"
@@ -175,13 +208,21 @@ const Auth = () => {
                                 value={formData.password}
                                 onChange={handleChange}
                             />
-                            {errors.password && <div className="error-message">{errors.password}</div>}
+                            {errors.password && (
+                                <div className="error-message">
+                                    {errors.password}
+                                </div>
+                            )}
                         </div>
 
                         <div className="input-group">
-                            <label htmlFor="repeatedPassword">Повторите пароль</label>
-                            <input 
-                                className={`auth-input ${errors.repeatedPassword ? 'error' : ''}`}
+                            <label htmlFor="repeatedPassword">
+                                Повторите пароль
+                            </label>
+                            <input
+                                className={`auth-input ${
+                                    errors.repeatedPassword ? "error" : ""
+                                }`}
                                 id="repeatedPassword"
                                 name="repeatedPassword"
                                 placeholder="Повторите пароль"
@@ -189,17 +230,24 @@ const Auth = () => {
                                 value={formData.repeatedPassword}
                                 onChange={handleChange}
                             />
-                            {errors.repeatedPassword && <div className="error-message">{errors.repeatedPassword}</div>}
+                            {errors.repeatedPassword && (
+                                <div className="error-message">
+                                    {errors.repeatedPassword}
+                                </div>
+                            )}
                         </div>
 
-                        <button className="submit-button" type="submit">Зарегистрироваться</button>
-                        <Link className="to-login" to="/login">Уже есть аккаунт?</Link>
+                        <button className="submit-button" type="submit">
+                            Зарегистрироваться
+                        </button>
+                        <Link className="to-login" to="/login">
+                            Уже есть аккаунт?
+                        </Link>
                     </form>
                 </div>
             </main>
         </>
     );
-}
-  
+};
+
 export default Auth;
-  

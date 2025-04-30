@@ -5,8 +5,12 @@ const Summary = () => {
                 <div className="project-settings">
                     <div className="project-header">
                         <h1>Alfaproject</h1>
-                        <button className="save-btn"><img src="../imgs/save.svg"></img>Сохранить</button>
-                        <button className="share-btn"><img src="../imgs/share.svg"></img>Поделиться</button>
+                        <button className="save-btn">
+                            <img src="../imgs/save.svg"></img>Сохранить
+                        </button>
+                        <button className="share-btn">
+                            <img src="../imgs/share.svg"></img>Поделиться
+                        </button>
                     </div>
                     <div className="filter">
                         <select id="filter">
@@ -15,7 +19,11 @@ const Summary = () => {
                             <option>В работе</option>
                             <option>Готово</option>
                         </select>
-                        <input className="filter-search-bar" type="text" placeholder="Поиск"></input>
+                        <input
+                            className="filter-search-bar"
+                            type="text"
+                            placeholder="Поиск"
+                        ></input>
                     </div>
                 </div>
                 <div className="members-settings">
@@ -32,7 +40,6 @@ const Summary = () => {
             </div>
         </main>
     );
-  }
-  
-  export default Summary;
-  
+};
+
+export default Summary;
