@@ -13,13 +13,15 @@ type User = {
     password: string
 };
 
-type AuthProviderProps = PropsWithChildren & {
-    isSignedIn?: boolean;
-}
+type AuthContextType = {
+    isAuthenticated: boolean;
+    login: (user: User) => void;
+    logout: () => void;
+};
 
 type ProtectedRouteProps = PropsWithChildren;
 
-export const AuthContext = createContext<User | null>(null);
+export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const timelines = ['Недели', 'Месяцы', 'Кварталы']
 
@@ -30,4 +32,4 @@ export const pages = [
     { name: 'Сводка', link: '/summary' }, 
 ]
 
-export type { ITask, ProtectedRouteProps, User, AuthProviderProps }
+export type { ITask, ProtectedRouteProps, User, AuthContextType }

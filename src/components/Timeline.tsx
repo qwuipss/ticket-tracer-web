@@ -15,22 +15,22 @@ const Timeline = () => {
         <div className="timeline-header">
           <h1>Alfaproject</h1>
           <button className="save-btn">
-            <img src="../imgs/save.svg"></img>Сохранить
+            <img src="/imgs/save.svg"></img>Сохранить
           </button>
           <button className="share-btn">
-            <img src="../imgs/share.svg"></img>Поделиться
+            <img src="/imgs/share.svg"></img>Поделиться
           </button>
         </div>
         <div className="timeline-members">
           <p>Участники</p>
           <div className="members">
-            <img src="../imgs/user.svg"></img>
-            <img src="../imgs/user.svg"></img>
-            <img src="../imgs/user.svg"></img>
-            <img src="../imgs/user.svg"></img>
+            <img src="/imgs/user.svg"></img>
+            <img src="/imgs/user.svg"></img>
+            <img src="/imgs/user.svg"></img>
+            <img src="/imgs/user.svg"></img>
           </div>
-          <img src="../imgs/ellipsis.svg"></img>
-          <img src="../imgs/plus.svg"></img>
+          <img src="/imgs/ellipsis.svg"></img>
+          <img src="/imgs/plus.svg"></img>
         </div>
       </div>
       <div className="side-info">

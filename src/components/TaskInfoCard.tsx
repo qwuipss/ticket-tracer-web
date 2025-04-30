@@ -16,11 +16,11 @@ const TaskInfoCard = ({ task, onClose }: TaskInfoCardProps) => {
           <h2 className="task-desc-header">Описание задачи</h2>
           <p className="task-desc">{task.description}</p>
           <button className="task-add-btn">
-            Добавить <img src="../imgs/dark_plus.svg"></img>
+            Добавить <img src="/imgs/dark_plus.svg"></img>
           </button>
           <h2 className="task-comments-header">Комментарии</h2>
           <div className="comments-section">
-            <img className="user-photo" src="../imgs/user.svg"></img>
+            <img className="user-photo" src="/imgs/user.svg"></img>
             <textarea
               className="task-comments"
               placeholder="Написать комментарий..."
@@ -30,14 +30,14 @@ const TaskInfoCard = ({ task, onClose }: TaskInfoCardProps) => {
         <div className="card-side-info">
           <div className="task-card-btns">
             <button className="share-btn">
-              <img src="../imgs/share.svg"></img>Поделиться
+              <img src="/imgs/share.svg"></img>Поделиться
             </button>
             <button className="action-btn">
-              <img src="../imgs/ellipsis.svg"></img>Действия
+              <img src="/imgs/ellipsis.svg"></img>Действия
             </button>
             <img
               className="close"
-              src="../imgs/cross.svg"
+              src="/imgs/cross.svg"
               onClick={onClose}
             ></img>
           </div>
@@ -52,14 +52,14 @@ const TaskInfoCard = ({ task, onClose }: TaskInfoCardProps) => {
             <div className="author">
               <div className="author-header">Автор</div>
               <div className="author-info">
-                <img className="author-photo" src="../imgs/user.svg"></img>
+                <img className="author-photo" src="/imgs/user.svg"></img>
                 <p className="author-id">@vanya</p>
               </div>
             </div>
             <div className="doer">
               <div className="doer-header">Исполнитель</div>
               <div className="doer-info">
-                <img className="doer-photo" src="../imgs/user.svg"></img>
+                <img className="doer-photo" src="/imgs/user.svg"></img>
                 <p className="doer-id">@petya</p>
               </div>
             </div>

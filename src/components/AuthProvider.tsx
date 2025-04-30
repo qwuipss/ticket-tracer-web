@@ -1,16 +1,32 @@
-import { useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
-import { AuthProviderProps, AuthContext } from "../types/Types";
+import { AuthContext } from "../types/Types";
 
 import { User } from "../types/Types";
 
-const AuthProvider = ({
-    children,
-    isSignedIn
-} : AuthProviderProps ) => {
-    const [user] = useState<User | null>(isSignedIn ? { email: 'a.a@a.a', name: '123', surname: '123', password: '123123123' } : null);
-
-    return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
-};
+export const AuthProvider = ({ children } : { children: ReactNode }) => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+    useEffect(() => {
+      const user = localStorage.getItem('user');
+      setIsAuthenticated(!!user);
+    }, []);
+  
+    const login = (user: User) => {
+      localStorage.setItem('user', JSON.stringify(user));
+      setIsAuthenticated(true);
+    };
+  
+    const logout = () => {
+      localStorage.removeItem('user');
+      setIsAuthenticated(false);
+    };
+  
+    return (
+      <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        {children}
+      </AuthContext.Provider>
+    );
+  };
 
 export default AuthProvider;

@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import { useAuth } from "../hooks/useAuth";
 
 const Auth = () => {
     const navigate = useNavigate();
@@ -86,15 +87,17 @@ const Auth = () => {
         return isValid;
     };
 
+    const { login } = useAuth();
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         
         if (validateForm()) {
-            console.log('Форма валидна, данные:', formData);
-            navigate('/dashboard/board');
+            login({ email: formData.email, name: formData.name, surname: formData.surname, password: formData.password })
+            navigate('/app/dashboard');
         }
     };
-    
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({

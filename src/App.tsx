@@ -17,17 +17,23 @@ const router = createBrowserRouter([
     children: [
       { path: "auth", element: <Auth /> },
       { path: "login", element: <Login /> },
+      {
+        path: "app/*",
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "dashboard",
+            element: <Dashboard />,
+            children: [
+              { path: "calendar", element: <Calendar />, },
+              { path: "gantt", element: <Timeline /> },
+              { path: "board", element: <Board /> },
+              { path: "summary", element: <Summary /> },
+            ]
+          }
+        ]
+      },
       { index: true, element: <Navigate to="/auth" replace /> }
-    ]
-  },
-  {
-    path: "dashboard",
-    element: <ProtectedRoute><Dashboard /></ProtectedRoute>,
-    children: [
-      { path: "calendar", element: <Calendar /> },
-      { path: "gantt", element: <Timeline /> },
-      { path: "board", element: <Board /> },
-      { path: "summary", element: <Summary /> },
     ]
   },
   {

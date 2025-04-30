@@ -13,7 +13,7 @@ import AuthProvider from './components/AuthProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AuthProvider isSignedIn={true}>
+    <AuthProvider>
       <App/>
     </AuthProvider>
   </StrictMode>,

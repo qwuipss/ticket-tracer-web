@@ -13,7 +13,7 @@ const Sidebar = () => {
         <li key="Доска">
           <NavLink
             key="Доска"
-            to="/dashboard/board"
+            to="board"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -24,7 +24,7 @@ const Sidebar = () => {
         <li key="Хронология">
           <NavLink
             key="Хронология"
-            to="/dashboard/gantt"
+            to="gantt"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -35,7 +35,7 @@ const Sidebar = () => {
         <li key="Календарь">
           <NavLink
             key="Календарь"
-            to="/dashboard/calendar"
+            to="calendar"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -46,7 +46,7 @@ const Sidebar = () => {
         <li key="Сводка">
           <NavLink
             key="Сводка"
-            to="/dashboard/summary"
+            to="summary"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
