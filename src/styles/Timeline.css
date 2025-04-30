@@ -146,3 +146,77 @@
 .timeline-filter-search-bar:hover {
     border-color: #000;
 }
+
+.timeline-board {
+    display: flex;
+    background-color: rgba(83, 220, 251, 0.10);
+    border-radius: 1vh;
+    border: 1px solid #53DCFB;
+    font-family: Inter;
+    margin-top: 2vh;
+    width: 100vw;
+    height: 80vh;
+}
+
+.timeline-board h2 {
+    border-bottom: 1px solid #53DCFB;
+    height: 3vh;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.timeline-elements {
+    border-right: 1px solid #53DCFB;
+    width: 22vw;
+}
+
+.timeunit-header {
+    font-weight: 600;
+    font-size: 1.5vh;
+    padding-left: 8vw;
+}
+
+.tasks-header {
+    font-weight: 600;
+    font-size: 1.5vh;
+    padding-left: 2vh;
+}
+
+.timeline-tasks {
+    list-style-type: none;
+    margin-left: 0;
+    padding-inline-start: 0;
+    margin-top: 0;
+}
+
+.timeline-task {
+    height: 3vh;
+    border-bottom: 1px solid rgba(83, 220, 251, 0.30);
+    width: 100%;
+    margin-top: 1.5vh;
+    padding-left: 2vh;
+    font-size: 1.3vh;
+}
+
+.add-task-button {
+    background: none;
+    border: none;
+    font-size: 1.3vh;
+    margin-left: 2vh;
+    padding: 0;
+    font-family: Inter;
+}
+
+.add-task-button img {
+    margin-right: 1vh;
+}
+
+.timeline-index {
+    position: absolute;
+    margin-left: 12vh;
+    height: 80vh;
+}
+
+.current {
+    background-color: rgba(83, 220, 251, 0.10);
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { timelines } from "../types/Types.tsx";
+import { tasks } from "../mock/Mock.tsx";
 
 const Timeline = () => {
     const [activeUnit, setActiveUnit] = useState("Недели");
@@ -58,6 +59,60 @@ const Timeline = () => {
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div className="timeline-board">
+                <div className="timeline-elements">
+                    <h2 className="tasks-header">
+                        Элементы
+                    </h2>
+                    <ul className="timeline-tasks">
+                        {tasks.map((task) => (
+                            <li className="timeline-task">
+                                {task.id} {task.name}
+                            </li>
+                        ))}
+                    </ul>
+                    <button className="add-task-button">
+                        <img src='/imgs/dark_plus.svg'></img>Создать
+                    </button>
+                </div>
+                <div className="timeline-elements">
+                    <h2 className="timeunit-header">
+                        Январь - Март
+                    </h2>
+                    <ul className="timeline-tasks">
+                        {tasks.map(() => (
+                            <li className="timeline-task">
+                                
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="timeline-elements current">
+                    <h2 className="timeunit-header">
+                        Апрель - Июнь
+                    </h2>
+                    <img className="timeline-index" src="/imgs/timeline_index.svg"></img>
+                    <ul className="timeline-tasks">
+                        {tasks.map(() => (
+                            <li className="timeline-task">
+                                
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="timeline-elements">
+                    <h2 className="timeunit-header">
+                        Июль - Сентябрь
+                    </h2>
+                    <ul className="timeline-tasks">
+                        {tasks.map(() => (
+                            <li className="timeline-task">
+
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </main>
     );
