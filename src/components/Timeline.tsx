@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { timelines } from "../types/Types.tsx";
+import { TIMELINES } from "../types/Types.tsx";
 import { tasks } from "../mock/Mock.tsx";
 
 const Timeline = () => {
@@ -49,7 +49,7 @@ const Timeline = () => {
                     ></input>
                 </div>
                 <ul className="timeline-units">
-                    {timelines.map((unit) => (
+                    {TIMELINES.map((unit) => (
                         <li
                             key={unit}
                             className={activeUnit === unit ? "unit-active" : ""}

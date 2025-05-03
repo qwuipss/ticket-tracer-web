@@ -6,16 +6,17 @@ interface ITask {
     description: string;
 }
 
-type User = {
+interface IUserResponse {
     email: string;
     name: string;
     surname: string;
-    password: string;
-};
+    id: string;
+}
 
 type AuthContextType = {
     isAuthenticated: boolean;
-    login: (user: User) => void;
+    auth: (user: IUserResponse) => void;
+    login: (user: IUserResponse) => void;
     logout: () => void;
 };
 
@@ -23,13 +24,8 @@ type ProtectedRouteProps = PropsWithChildren;
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-export const timelines = ["Недели", "Месяцы", "Кварталы"];
+export const TIMELINES = ["Недели", "Месяцы", "Кварталы"];
 
-export const pages = [
-    { name: "Доска", link: "/board" },
-    { name: "Хронология", link: "/timeline" },
-    { name: "Календарь", link: "/calendar" },
-    { name: "Сводка", link: "/summary" },
-];
+export const BASE_URL = 'https://qwuipss.space/ticket-tracer-api/';
 
-export type { ITask, ProtectedRouteProps, User, AuthContextType };
+export type { ITask, IUserResponse, ProtectedRouteProps, AuthContextType };

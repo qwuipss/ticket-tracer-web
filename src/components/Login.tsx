@@ -1,6 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+
 import { useAuth } from "../hooks/useAuth";
+
+import { IUserResponse } from "../types/Types";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -14,6 +18,10 @@ const Login = () => {
         email: "",
         password: "",
     });
+
+    const [loading, setIsLoading] = useState(false);
+    
+    const [requestError, setrequestError] = useState(false);
 
     const validateForm = () => {
         let isValid = true;
@@ -50,19 +58,81 @@ const Login = () => {
 
     const { login } = useAuth();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (validateForm()) {
-            login({
+            const loginData = {
                 email: formData.email,
-                name: "Ivan",
-                surname: "Ivanov",
                 password: formData.password,
-            });
-            navigate("/app/dashboard");
+            }
+
+            try {
+                setIsLoading(true);
+                const userData = await axios.post<IUserResponse>(
+                    '/api/accounts/login', 
+                    loginData,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        withCredentials: true,
+                    }
+                );
+                if (userData.status === 200) {
+                    console.log(userData);
+                    login(userData.data);
+                    navigate("/app/dashboard");
+                }
+            } catch (error) {
+                console.log(error)
+                setrequestError(true);
+            } finally {
+                setIsLoading(false);
+            }
         }
     };
+
+    if (loading) {
+        return (
+            <>
+                <img className="decor bg1" src="../imgs/bg1.svg"></img>
+                <img className="decor bg2" src="../imgs/bg2.svg"></img>
+                <img className="decor bg3" src="../imgs/bg3.svg"></img>
+                <img className="decor bg4" src="../imgs/bg5.svg"></img>
+                <main className="error-container">
+                    <img
+                        className="error-logo"
+                        src="../imgs/logo.svg"
+                        alt="Логотип"
+                    />
+                    <h1 className="error-header">Загрузка...</h1>
+                </main>
+            </>
+        );
+    }
+
+    if (requestError) {
+        return (
+            <>
+                <img className="decor bg1" src="../imgs/bg1.svg"></img>
+                <img className="decor bg2" src="../imgs/bg2.svg"></img>
+                <img className="decor bg3" src="../imgs/bg3.svg"></img>
+                <img className="decor bg4" src="../imgs/bg5.svg"></img>
+                <main className="error-container">
+                    <img
+                        className="error-logo"
+                        src="../imgs/logo.svg"
+                        alt="Логотип"
+                    />
+                    <h1 className="error-header">Ошибка авторизации</h1>
+                    <button className="submit-button" onClick={() => setrequestError(false)}>
+                        Попробовать снова
+                    </button>
+                </main>
+            </>
+        );
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

@@ -72,7 +72,7 @@
 }
 
 .create-btn {
-    padding: 0;
+    padding: 0 1vh;
     background-color: #34C6CD;
     justify-self: center;
     font-size: 1.3vh;
@@ -84,8 +84,7 @@
     border: none;
     border-radius: 0.5vh;
     height: 3vh;
-    width: 6vw;
-    min-width: wrap;
+    min-width: 110px;
     cursor: pointer;
 }
 
@@ -129,8 +128,8 @@
 
 .nav-buttons {
     display: flex;
-    margin: 0 2vw;
-    width: 3vw;
+    margin: 0 1.5vw;
+    width: wrap;
     justify-content: space-between;
 }
 
@@ -144,6 +143,13 @@
 
 .nav-photo {
     height: 3vh;
+    overflow: clip;
+}
+
+.profile-button {
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .user-icons {

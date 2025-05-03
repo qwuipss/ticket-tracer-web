@@ -1,29 +1,34 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from 'react';
 
-import { AuthContext } from "../types/Types";
-
-import { User } from "../types/Types";
+import { AuthContext, IUserResponse } from '../types/Types';
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
-        const user = localStorage.getItem("user");
+        const user = localStorage.getItem('user');
         setIsAuthenticated(!!user);
     }, []);
 
-    const login = (user: User) => {
-        localStorage.setItem("user", JSON.stringify(user));
+    const auth = (user: IUserResponse) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        setIsAuthenticated(true);
+    };
+
+    const login = (user: IUserResponse) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('token', user.id)
         setIsAuthenticated(true);
     };
 
     const logout = () => {
-        localStorage.removeItem("user");
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
         setIsAuthenticated(false);
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, auth, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
