@@ -1,0 +1,141 @@
+.summary {
+  margin: 2vh 43px 10px 14vw;
+  padding: 20px;
+}
+
+.wrapper {
+  height: 28vh;
+  width: 700px;
+  border-radius: 2vh;
+  background-color: rgba(83, 220, 251, 0.10);
+  box-shadow: 4px 4px 9.8px 0px rgba(0, 0, 0, 0.16), 0px 0px 10.8px 0px #53DCFB inset;
+  padding: 2.5vh 3vh;
+  margin-bottom: 3vh;
+}
+
+.section-header {
+  font-family: Unbounded;
+  font-size: 1.5vh;
+  font-weight: 600;
+  margin: 0;
+}
+
+.diagram {
+  display: flex;
+  flex-direction: row;
+}
+
+.status-diagram {
+  border: none;
+  border-radius: 8px;
+  width: 400px;
+  margin-top: 2vh;
+  height: 360px;
+  text-align: center;
+}
+
+.tasks-amount {
+  display: flex;
+  flex-direction: column;
+  font-family: Unbounded;
+  
+}
+
+.total-tasks {
+  font-size: 5vh;
+  font-weight: 400;
+}
+
+.total-tasks-label {
+  font-size: 2vh;
+  margin-bottom: 20px;
+}
+
+.diagram-container {
+  height: 160px;
+  width: 160px;
+}
+
+.recharts-wrapper {
+  width: 300px !important;
+  height: 600px !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin-top: -140px;
+}
+
+path {
+  stroke: none !important;
+}
+
+.legend {
+  font-family: Nunito Sans;
+  font-size: 1.7vh;
+  align-self: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.leg-el {
+  margin-bottom: 2vh;
+  display: flex;
+}
+
+.mark {
+  height: 35px;
+  width: 35px;
+  align-self: center;
+  border-radius: 5px;
+  margin-right: 30px;
+}
+
+.todo {
+  background-color: #C7F66F;
+}
+
+.inwork {
+  background-color: #1D57EB;
+}
+
+.ready {
+  background-color: #F66F6F;
+}
+
+.team-table {
+  display: grid;
+  grid-template-columns: auto 400px;
+  margin-top: 2vh;
+  row-gap: 2vh;
+}
+
+.column-header {
+  font-family: Unbounded;
+  font-size: 1.5vh;
+  font-weight: 600;
+  margin: 0;
+}
+
+.progress-container {
+  border-radius: 10px;
+  background: rgba(83, 220, 251, 0.10);
+  box-shadow: 0px 0px 10.8px 0px #53DCFB inset, 4px 4px 9.8px 0px rgba(0, 0, 0, 0.16);
+  display: flex;
+}
+
+.progress {
+  border-radius: 8px;
+  background: #53DCFB;
+  box-shadow: 0px 0px 3.7px 0px #FFF inset;
+  height: 80%;
+  align-self: center;
+  margin-left: 5px;
+}
+
+.table-user-info {
+  display: flex;
+  align-items: center;
+}
+
+.table-user-info img {
+  margin-right: 1vw;
+}

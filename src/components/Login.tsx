@@ -80,7 +80,6 @@ const Login = () => {
                     }
                 );
                 if (userData.status === 200) {
-                    console.log(userData);
                     login(userData.data);
                     navigate("/app/dashboard");
                 }
