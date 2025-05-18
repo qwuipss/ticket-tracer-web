@@ -205,7 +205,7 @@
 }
 
 .card-filter:hover {
-    background-color: #53DCFB;
+    background-color: rgba(83, 220, 251, 0.50);
 }
 
 .task-info-table {

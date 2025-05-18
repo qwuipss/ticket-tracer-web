@@ -20,6 +20,7 @@
     font-weight: 600;
     font-style: normal;
     letter-spacing: 0.1vh;
+    z-index: 5;
 }
 
 .sidebar-logo {

@@ -4,15 +4,15 @@ import { TIMELINES } from "../types/Types.tsx";
 import { tasks } from "../mock/Mock.tsx";
 
 const Timeline = () => {
-    const [activeUnit, setActiveUnit] = useState("Недели");
+    const [activeUnit, setActiveUnit] = useState("Кварталы");
 
     const handleUnitClick = (unit: string) => {
         setActiveUnit(unit);
     };
 
     return (
-        <main className="timeline">
-            <div className="timeline-info">
+        <main className="timeline" key="timeline">
+            <div className="project-settings">
                 <div className="timeline-header">
                     <h1>Alfaproject</h1>
                     <button className="save-btn">
@@ -21,17 +21,6 @@ const Timeline = () => {
                     <button className="share-btn">
                         <img src="/imgs/share.svg"></img>Поделиться
                     </button>
-                </div>
-                <div className="timeline-members">
-                    <p>Участники</p>
-                    <div className="members">
-                        <img src="/imgs/user.svg"></img>
-                        <img src="/imgs/user.svg"></img>
-                        <img src="/imgs/user.svg"></img>
-                        <img src="/imgs/user.svg"></img>
-                    </div>
-                    <img src="/imgs/ellipsis.svg"></img>
-                    <img src="/imgs/plus.svg"></img>
                 </div>
             </div>
             <div className="side-info">
@@ -67,7 +56,7 @@ const Timeline = () => {
                     </h2>
                     <ul className="timeline-tasks">
                         {tasks.map((task) => (
-                            <li className="timeline-task">
+                            <li className="timeline-task" key={task.id}>
                                 {task.id} {task.name}
                             </li>
                         ))}
@@ -81,8 +70,8 @@ const Timeline = () => {
                         Январь - Март
                     </h2>
                     <ul className="timeline-tasks">
-                        {tasks.map(() => (
-                            <li className="timeline-task">
+                        {tasks.map((task) => (
+                            <li className="timeline-task" key={task.id}>
                                 
                             </li>
                         ))}
@@ -94,8 +83,8 @@ const Timeline = () => {
                     </h2>
                     <img className="timeline-index" src="/imgs/timeline_index.svg"></img>
                     <ul className="timeline-tasks">
-                        {tasks.map(() => (
-                            <li className="timeline-task">
+                        {tasks.map((task) => (
+                            <li className="timeline-task" key={task.id}>
                                 
                             </li>
                         ))}
@@ -106,8 +95,8 @@ const Timeline = () => {
                         Июль - Сентябрь
                     </h2>
                     <ul className="timeline-tasks">
-                        {tasks.map(() => (
-                            <li className="timeline-task">
+                        {tasks.map((task) => (
+                            <li className="timeline-task" key={task.id}>
 
                             </li>
                         ))}

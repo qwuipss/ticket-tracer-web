@@ -1,13 +1,14 @@
 import { useState } from "react";
 import TaskInfoCard from "./TaskInfoCard";
-
-import { ITask } from "../types/Types.tsx";
-
+import { ITask, TaskStatus, TaskGroups } from "../types/Types.tsx";
 import { tasks } from "../mock/Mock";
 
 const Board = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedTask, setSelectedTask] = useState(tasks[0]);
+    const [currentFilter, setCurrentFilter] = useState<TaskStatus>(TaskStatus.NoFilter);
+
+
 
     const handleOpenModal = (task: ITask) => {
         setSelectedTask(task);
@@ -18,95 +19,85 @@ const Board = () => {
         setIsModalOpen(false);
     };
 
+    const filteredTasks: TaskGroups = {
+        [TaskStatus.Todo]: tasks.filter(task => task.status === TaskStatus.Todo),
+        [TaskStatus.InProgress]: tasks.filter(task => task.status === TaskStatus.InProgress),
+        [TaskStatus.Done]: tasks.filter(task => task.status === TaskStatus.Done),
+        [TaskStatus.NoFilter]: tasks
+    };
+
+    const visibleColumns = currentFilter === TaskStatus.NoFilter
+        ? [TaskStatus.Todo, TaskStatus.InProgress, TaskStatus.Done]
+        : [currentFilter];
+
     return (
         <main className="board">
             <div className="project-settings">
                 <div className="project-header">
                     <h1>Alfaproject</h1>
                     <button className="save-btn">
-                        <img src="/imgs/save.svg"></img>Сохранить
+                        <img src="/imgs/save.svg" alt="Сохранить" />Сохранить
                     </button>
                     <button className="share-btn">
-                        <img src="/imgs/share.svg"></img>Поделиться
+                        <img src="/imgs/share.svg" alt="Поделиться" />Поделиться
                     </button>
                 </div>
-                <div className="members-settings">
-                    <p>Участники</p>
-                    <div className="members">
-                        <img src="/imgs/user.svg"></img>
-                        <img src="/imgs/user.svg"></img>
-                        <img src="/imgs/user.svg"></img>
-                        <img src="/imgs/user.svg"></img>
-                    </div>
-                    <img src="/imgs/ellipsis.svg"></img>
-                    <img src="/imgs/plus.svg"></img>
-                </div>
             </div>
+            
             <div className="filter">
                 <label>Фильтр</label>
-                <select id="filter">
-                    <option>Отсутствует</option>
-                    <option>К выполнению</option>
-                    <option>В работе</option>
-                    <option>Готово</option>
+                <select 
+                    id="filter" 
+                    value={currentFilter}
+                    onChange={(e) => setCurrentFilter(e.target.value as TaskStatus)}
+                >
+                    {Object.values(TaskStatus).map(status => (
+                        <option key={status} value={status}>
+                            {status}
+                        </option>
+                    ))}
                 </select>
                 <input
                     className="filter-search-bar"
                     type="text"
                     placeholder="Поиск"
-                ></input>
+                />
             </div>
 
             <div className="task-board">
-                <div className="task-column">
-                    <h2>К выполнению</h2>
-                    <div
-                        className="task-card"
-                        onClick={() => handleOpenModal(tasks[0])}
-                    >
-                        <p className="task-name-table">{tasks[0].name}</p>
-                        <div className="task-info">
-                            <img
-                                className="task-card-photo"
-                                src="/imgs/user.svg"
-                            ></img>
-                            <span className="task-id-table">{tasks[0].id}</span>
+                {visibleColumns.map(column => (
+                    <div className="task-column" key={column}>
+                        <h2>{column}</h2>
+                        <div className="task-list">
+                            {filteredTasks[column].map((task: ITask) => (
+                                <div
+                                    className="task-card"
+                                    key={task.id}
+                                    onClick={() => handleOpenModal(task)}
+                                >
+                                    <p className="task-name-table">{task.name}</p>
+                                    <div className="task-info">
+                                        <img
+                                            className="task-card-photo"
+                                            src="/imgs/user.svg"
+                                            alt="User"
+                                        />
+                                        <span className="task-id-table">{task.id}</span>
+                                        <img src="/imgs/flag-1.svg"></img>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
+                        {column === "К выполнению" && (
+                            <button 
+                                className='create-new-task-btn' 
+                                onClick={() => handleOpenModal(tasks[0])}
+                            >
+                                + Создать
+                            </button>
+                        )}
                     </div>
-                </div>
-                <div className="task-column">
-                    <h2>В работе</h2>
-                    <div
-                        className="task-card"
-                        onClick={() => handleOpenModal(tasks[1])}
-                    >
-                        <p className="task-name-table">{tasks[1].name}</p>
-                        <div className="task-info">
-                            <img
-                                className="task-card-photo"
-                                src="/imgs/user.svg"
-                            ></img>
-                            <span className="task-id-table">{tasks[1].id}</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="task-column">
-                    <h2>Готово</h2>
-                    <div
-                        className="task-card"
-                        onClick={() => handleOpenModal(tasks[2])}
-                    >
-                        <p className="task-name-table">{tasks[2].name}</p>
-                        <div className="task-info">
-                            <img
-                                className="task-card-photo"
-                                src="/imgs/user.svg"
-                            ></img>
-                            <span className="task-id-table">{tasks[2].id}</span>
-                        </div>
-                    </div>
-                </div>
-                <img className="add-button" src="/imgs/add.svg"></img>
+                ))}
             </div>
 
             {isModalOpen && (
