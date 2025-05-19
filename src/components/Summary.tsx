@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { tasks } from '../mock/Mock';
 
 const Summary = () => {
     const [taskData, setTaskData] = useState([
@@ -17,6 +18,10 @@ const Summary = () => {
 
     const [totalTasks, setTotalTasks] = useState(20);
 
+    const [currentTasks, setCurrentTasks] = useState(tasks);
+
+    useEffect(() => setCurrentTasks(tasks), []);
+
     useEffect(() => setTaskData([
         { name: "К выполнению", value: 4, color: "#C7F66F" },
         { name: "В работе", value: 6, color: "#1D57EB" },
@@ -28,9 +33,12 @@ const Summary = () => {
         { email: "@vanya", percent: 40 },
         { email: "@vanya", percent: 50 },
         { email: "@vanya", percent: 60 },
+        { email: "@vanya", percent: 60 },
     ]), []);
 
     useEffect(() => setTotalTasks(20), []);
+
+
 
     return (
         <main className="summary" key="summary">
@@ -93,11 +101,13 @@ const Summary = () => {
                 </div>
                 <div className="team-info wrapper">
                     <h2 className='section-header'>Рабочая нагрузка команды</h2>
-                    <div className='team-table'>
+                    <div className='team-table-headers'>
                         <h3 className='column-header'>Исполнитель</h3>
                         <h3 className='column-header'>Распределение работы</h3>
+                    </div>
+                    <div className='team-table'>
                         {userProgress.map(({ email, percent }, index) => (
-                            <div key={index}>
+                            <div className='team-table-row' key={index}>
                                 <div className='table-user-info'><img src="/imgs/user.svg"></img>{email}</div>
                                 <div className="progress-container">
                                     <div className="progress" style={{ width: percent + '%' }}></div>
@@ -106,53 +116,29 @@ const Summary = () => {
                         ))}
                     </div>
                 </div>
-                <div className="task-list wrapper">
+                <div className="task-list-wrapper">
                     <h2 className='section-header'>Список задач</h2>
-                    <div className='task-list-table'>
+                    <div className='summary-task-list-table'>
                         <table>
                             <thead>
                                 <tr className='task-list-table-header'>
                                     <th className='type-column'>Тип</th>
-                                    <th className='key-column'>Ключ</th>
                                     <th>Название</th>
                                     <th>Статус</th>
                                     <th>Исполнитель</th>
                                     <th className='comment-column'>Комментарий</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td className='type-column'><img src='/imgs/flag-epic.svg'></img></td>
-                                    <td className='key-column'>Al-01</td>
-                                    <td>Добавить блок описания</td>
-                                    <td><span className="status-badge ready">Готово</span></td>
-                                    <td><div className='user-column'><img src="/imgs/user.svg"></img>@vanya</div></td>
-                                    <td className='comment-column'>Готово</td>
-                                </tr>
-                                <tr>
-                                    <td className='type-column'><img src='/imgs/flag-epic.svg'></img></td>
-                                    <td className='key-column'>Al-02</td>
-                                    <td>Добавить блок описания</td>
-                                    <td><span className="status-badge ready">Готово</span></td>
-                                    <td><div className='user-column'><img src="/imgs/user.svg"></img>@vanya</div></td>
-                                    <td className='comment-column'>Готово</td>
-                                </tr>
-                                <tr>
-                                    <td className='type-column'><img src='/imgs/flag-epic.svg'></img></td>
-                                    <td className='key-column'>Al-03</td>
-                                    <td>Добавить блок описания</td>
-                                    <td><span className="status-badge in-progress">В работе</span></td>
-                                    <td><div className='user-column'><img src="/imgs/user.svg"></img>@vanya</div></td>
-                                    <td className='comment-column'>В работе</td>
-                                </tr>
-                                <tr>
-                                    <td className='type-column'><img src='/imgs/flag-epic.svg'></img></td>
-                                    <td className='key-column'>Al-04</td>
-                                    <td>Добавить блок описания</td>
-                                    <td><span className="status-badge todo">К выполнению</span></td>
-                                    <td><div className='user-column'><img src="/imgs/user.svg"></img>@vanya</div></td>
-                                    <td className='comment-column'>К выполнению</td>
-                                </tr>
+                            <tbody className='task-table-body'>
+                                {currentTasks.map(({id, name, description, status, type}) => (
+                                    <tr key={id}>
+                                        <td className='type-column'><img src={`/imgs/flag-${type}.svg`}></img></td>
+                                        <td>{name}</td>
+                                        <td><span className="status-badge">{status}</span></td>
+                                        <td><div className='user-column'><img src="/imgs/user.svg"></img>@vanya</div></td>
+                                        <td className='comment-column'>{description}</td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>

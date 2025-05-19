@@ -99,11 +99,23 @@ path {
   background-color: #F66F6F;
 }
 
-.team-table {
+.team-table-headers {
   display: grid;
-  grid-template-columns: auto 400px;
+  grid-template-columns: 475px 400px;
   margin-top: 38px;
   row-gap: 26px;
+}
+
+.team-table {
+  overflow: auto;
+  height: 280px;
+}
+
+.team-table-row {
+  display: grid;
+  grid-template-columns: auto 400px;
+  margin-top: 28px;
+  padding-right: 10px;
 }
 
 .column-header {
@@ -118,6 +130,7 @@ path {
   background: rgba(83, 220, 251, 0.10);
   box-shadow: 0px 0px 10.8px 0px #53DCFB inset, 4px 4px 9.8px 0px rgba(0, 0, 0, 0.16);
   display: flex;
+  height: 100%;
 }
 
 .progress {
@@ -138,17 +151,30 @@ path {
   margin-right: 1vw;
 }
 
-.task-list {
+.task-list-wrapper {
   width: 1950px;
+  height: wrap;
+  min-height: 380px;
+  border-radius: 24px;
+  background-color: rgba(83, 220, 251, 0.10);
+  box-shadow: 4px 4px 9.8px 0px rgba(0, 0, 0, 0.16), 0px 0px 10.8px 0px #53DCFB inset;
+  padding: 30px 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
 }
 
-.task-list-table {
+.summary-task-list-table {
   margin-top: 30px;
   margin-bottom: 30px;
   overflow-x: auto;
   border-radius: 16px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   border: 2px solid #53DCFB;
+  overflow-y: auto;
+}
+
+.task-table-body {
+  overflow: auto;
 }
 
 .task-list-table-header {
@@ -197,17 +223,17 @@ td {
 
 .status-badge.ready {
   background-color: #e6f7e6;
-  color: #2e7d32;
+  color: #F66F6F;
 }
 
 .status-badge.in-progress {
   background-color: #e3f2fd;
-  color: #1565c0;
+  color: #1D57EB;
 }
 
 .status-badge.todo {
   background-color: #fff8e1;
-  color: #ff8f00;
+  color: #C7F66F;
 }
 
 .type-column {

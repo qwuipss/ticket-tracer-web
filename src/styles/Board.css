@@ -179,20 +179,12 @@
 .task-info {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
 }
 
 .task-card-photo {
     margin-left: 0.5vh;
-}
-
-.task-id-table {
-    background-color: #fff;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 1vh;
-    margin-left: 0.5vw;
-    font-weight: 600
 }
 
 .create-new-task-btn {
@@ -203,4 +195,9 @@
     font-size: 18px;
     font-weight: 700;
     padding: 0;
+}
+
+.type-flag {
+    height: 30px;
+    margin-right: 10px
 }

@@ -5,6 +5,7 @@ interface ITask {
     name: string;
     description: string;
     status: string;
+    type: number;
 }
 
 interface IUserResponse {

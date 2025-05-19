@@ -82,8 +82,7 @@ const Board = () => {
                                             src="/imgs/user.svg"
                                             alt="User"
                                         />
-                                        <span className="task-id-table">{task.id}</span>
-                                        <img src="/imgs/flag-1.svg"></img>
+                                        <img className="type-flag" src={`/imgs/flag-${task.type}.svg`}></img>
                                     </div>
                                 </div>
                             ))}

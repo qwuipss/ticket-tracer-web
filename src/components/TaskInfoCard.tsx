@@ -11,8 +11,10 @@ const TaskInfoCard = ({ task, onClose }: TaskInfoCardProps) => {
             <div className="task-info-substrate"></div>
             <div className="task-info-card">
                 <div className="base-info">
-                    <p className="task-id">{task.id}</p>
-                    <h1 className="task-name">{task.name}</h1>
+                    <div className="task-main-info">
+                        <h1 className="task-name">{task.name}</h1>
+                        <img className="card-type-flag" src={`/imgs/flag-${task.type}.svg`}></img>
+                    </div>
                     <h2 className="task-desc-header">Описание задачи</h2>
                     <p className="task-desc">{task.description}</p>
                     <button className="task-add-btn">
@@ -29,10 +31,10 @@ const TaskInfoCard = ({ task, onClose }: TaskInfoCardProps) => {
                 </div>
                 <div className="card-side-info">
                     <div className="task-card-btns">
-                        <button className="share-btn">
+                        <button className="share-button">
                             <img src="/imgs/share.svg"></img>Поделиться
                         </button>
-                        <button className="action-btn">
+                        <button className="action-button">
                             <img src="/imgs/ellipsis.svg"></img>Действия
                         </button>
                         <img
