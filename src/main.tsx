@@ -9,6 +9,7 @@ import "./styles/Timeline.css";
 import "./styles/Auth.css";
 import "./styles/ErrorMessage.css";
 import "./styles/Summary.css";
+import "./styles/UtilPopup.css"
 import App from "./App.tsx";
 import AuthProvider from "./components/AuthProvider.tsx";
 

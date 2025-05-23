@@ -154,7 +154,8 @@
     border: 1px solid #53DCFB;
     font-family: Inter;
     margin-top: 2vh;
-    width: 100vw;
+    width: 100%;
+    overflow-x: auto;
     height: 80vh;
 }
 
@@ -214,7 +215,7 @@
 .timeline-index {
     position: absolute;
     margin-left: 12vh;
-    height: 80vh;
+    height: 100%;
 }
 
 .current {

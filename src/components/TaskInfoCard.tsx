@@ -1,25 +1,65 @@
-import { ITask } from "../types/Types.tsx";
+import { useState } from "react";
+import { ITask, ITaskInfoCardProps } from "../types/Types.tsx";
 
-interface TaskInfoCardProps {
-    task: ITask;
-    onClose: () => void;
-}
+const TaskInfoCard = ({ task, onClose, onSave }: ITaskInfoCardProps) => {
+    const [editedTask, setEditedTask] = useState<ITask>({...task});
+    const [isEditing, setIsEditing] = useState(false);
 
-const TaskInfoCard = ({ task, onClose }: TaskInfoCardProps) => {
+    const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setEditedTask({...editedTask, description: e.target.value});
+    };
+
+    const handleSave = () => {
+        onSave(editedTask);
+        setIsEditing(false);
+    };
+    
     return (
         <div>
             <div className="task-info-substrate"></div>
             <div className="task-info-card">
                 <div className="base-info">
                     <div className="task-main-info">
-                        <h1 className="task-name">{task.name}</h1>
-                        <img className="card-type-flag" src={`/imgs/flag-${task.type}.svg`}></img>
+                        <h1 className="task-name">{editedTask.name}</h1>
+                        <img className="card-type-flag" src={`/imgs/flag-${editedTask.type}.svg`} alt="Тип задачи" />
                     </div>
-                    <h2 className="task-desc-header">Описание задачи</h2>
-                    <p className="task-desc">{task.description}</p>
-                    <button className="task-add-btn">
-                        Добавить <img src="/imgs/dark_plus.svg"></img>
-                    </button>
+                    <div className="description-section">
+                        {isEditing ? (
+                            <>
+                                <div className="edit-controls">
+                                    <h2 className="task-desc-header">Описание задачи</h2>
+                                    <button className="save-changes-btn" onClick={handleSave}>
+                                        Сохранить
+                                    </button>
+                                    <button className="cancel-changes-btn" onClick={() => setIsEditing(false)}>
+                                        Отмена
+                                    </button>
+                                </div>
+                                <textarea 
+                                    className="task-desc" 
+                                    value={editedTask.description}
+                                    onChange={handleDescriptionChange}
+                                    autoFocus
+                                />
+                            </>
+                        ) : (
+                            <>
+                                <div className="edit-controls">
+                                    <h2 className="task-desc-header">Описание задачи</h2>
+                                    <button 
+                                    className="edit-btn"
+                                    onClick={() => setIsEditing(true)}
+                                    >
+                                        <img src="/imgs/edit.svg" alt="Редактировать" />
+                                    </button>
+                                </div>
+                                <p className="task-desc-text" onClick={() => setIsEditing(true)}>
+                                    {editedTask.description || "Нажмите, чтобы добавить описание"}
+                                </p>
+                            </>
+                        )}
+                    </div>
+                    
                     <h2 className="task-comments-header">Комментарии</h2>
                     <div className="comments-section">
                         <img className="user-photo" src="/imgs/user.svg"></img>
@@ -44,7 +84,6 @@ const TaskInfoCard = ({ task, onClose }: TaskInfoCardProps) => {
                         ></img>
                     </div>
                     <select className="card-filter">
-                        <option>Отсутствует</option>
                         <option>К выполнению</option>
                         <option>В работе</option>
                         <option>Готово</option>

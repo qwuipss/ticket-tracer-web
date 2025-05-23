@@ -3,21 +3,42 @@ import { useState } from "react";
 import axios from "axios";
 
 import { useAuth } from "../hooks/useAuth";
+import { BASE_URL } from "../types/Types";
+import ErrorPopup from "./ErrorPopup";
+import LoadingPopup from "./LoadingPopup";
 
 const Header = () => {
-    const token = localStorage.getItem('token');
+    const userDataString = localStorage.getItem('user');
+
+    if (!userDataString) {
+        throw new Error('Данные пользователя не найдены.');
+    }
+
+    const userData = JSON.parse(userDataString) as {
+        email: string;
+        name: string;
+        surname: string;
+        id: string;
+    };
+
     const { logout } = useAuth();
     const navigate = useNavigate();
 
-    const [loading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const [requestError, setrequestError] = useState(false);
+    const [isRequestError, setRequestError] = useState(false);
+
+    const [isLogoutMenuOpen, setLogoutMenuOpen] = useState(false);
+
+    const handleCloseUtilModal = () => {
+        setRequestError(false);
+    };
 
     const handleLogout = async () => {
         try {
             setIsLoading(true);
             const userData = await axios.post(
-                '/api/accounts/logout',
+                `${BASE_URL}/accounts/logout`,
                 null,
                 {
                     headers: {
@@ -27,14 +48,13 @@ const Header = () => {
                 }
             );
             if (userData.status === 204) {
+                setIsLoading(false);
                 logout();
                 navigate("/auth");
             }
-        } catch (error) {
-            console.log(error)
-            setrequestError(true);
-        } finally {
+        } catch {
             setIsLoading(false);
+            setRequestError(true);
         }
     };
 
@@ -73,16 +93,43 @@ const Header = () => {
                         <img src="../imgs/help.svg"></img>
                         <img src="../imgs/settings.svg"></img>
                     </div>
-                    <button className="profile-button" onClick={() => handleLogout()}>
-                        <img
-                            className="nav-photo"
-                            src="../imgs/user.svg"
-                            alt="User1"
-                        ></img>
-                    </button>
-                        
+                    <div className="logout-menu">
+                        <button className="profile-button" onClick={() => {
+                                if (isLogoutMenuOpen) { 
+                                    setLogoutMenuOpen(false);
+                                } else {
+                                    setLogoutMenuOpen(true);
+                                }
+                            }}>
+                            <img
+                                className="nav-photo"
+                                src="../imgs/user.svg"
+                                alt="User1"
+                            ></img>
+                        </button>
+                        {isLogoutMenuOpen && 
+                            <div className="dropdown-logout-menu">
+                                <p className="user-name">{userData.name}</p>
+                                <p 
+                                    className="exit-button"
+                                    onClick={() => handleLogout()}>
+                                    Выход
+                                </p>
+                            </div>
+                        }
+                    </div>
                 </div>
             </nav>
+
+            {isRequestError && (
+                <ErrorPopup 
+                    onClose={handleCloseUtilModal}
+                />
+            )}
+
+            {isLoading && (
+                <LoadingPopup />
+            )}
         </header>
     );
 };

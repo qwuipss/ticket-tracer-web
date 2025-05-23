@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { useAuth } from "../hooks/useAuth";
 
-import { IUserResponse } from "../types/Types";
+import { BASE_URL, IUserResponse } from "../types/Types";
 
 const Auth = () => {
     const navigate = useNavigate();
@@ -111,7 +111,7 @@ const Auth = () => {
             try {
                 setIsLoading(true);
                 const userData = await axios.post<IUserResponse>(
-                    '/api/accounts/register', 
+                    `${BASE_URL}/accounts/register`, 
                     authData,
                     {
                         headers: {
@@ -124,8 +124,7 @@ const Auth = () => {
                     login(userData.data);
                     navigate("/app/dashboard");
                 }
-            } catch (error) {
-                console.log(error)
+            } catch {
                 setrequestError(true);
             } finally {
                 setIsLoading(false);

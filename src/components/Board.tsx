@@ -7,12 +7,19 @@ const Board = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedTask, setSelectedTask] = useState(tasks[0]);
     const [currentFilter, setCurrentFilter] = useState<TaskStatus>(TaskStatus.NoFilter);
-
-
+    const [tasksState, setTasksState] = useState(tasks);    
 
     const handleOpenModal = (task: ITask) => {
         setSelectedTask(task);
         setIsModalOpen(true);
+    };
+
+    const handleSaveTask = (updatedTask: ITask) => {
+        setTasksState(prevTasks => 
+            prevTasks.map(task => 
+                task.id === updatedTask.id ? updatedTask : task
+            )
+        );
     };
 
     const handleCloseModal = () => {
@@ -20,10 +27,10 @@ const Board = () => {
     };
 
     const filteredTasks: TaskGroups = {
-        [TaskStatus.Todo]: tasks.filter(task => task.status === TaskStatus.Todo),
-        [TaskStatus.InProgress]: tasks.filter(task => task.status === TaskStatus.InProgress),
-        [TaskStatus.Done]: tasks.filter(task => task.status === TaskStatus.Done),
-        [TaskStatus.NoFilter]: tasks
+        [TaskStatus.Todo]: tasksState.filter(task => task.status === TaskStatus.Todo),
+        [TaskStatus.InProgress]: tasksState.filter(task => task.status === TaskStatus.InProgress),
+        [TaskStatus.Done]: tasksState.filter(task => task.status === TaskStatus.Done),
+        [TaskStatus.NoFilter]: tasksState
     };
 
     const visibleColumns = currentFilter === TaskStatus.NoFilter
@@ -100,7 +107,11 @@ const Board = () => {
             </div>
 
             {isModalOpen && (
-                <TaskInfoCard task={selectedTask} onClose={handleCloseModal} />
+                <TaskInfoCard 
+                    task={selectedTask} 
+                    onClose={handleCloseModal}
+                    onSave={handleSaveTask}
+                />
             )}
         </main>
     );

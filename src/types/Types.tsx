@@ -22,6 +22,16 @@ type AuthContextType = {
     logout: () => void;
 };
 
+interface ITaskInfoCardProps {
+    task: ITask;
+    onClose: () => void;
+    onSave: (updatedTask: ITask) => void;
+}
+
+interface IErrorPopupProps {
+    onClose: () => void;
+}
+
 type ProtectedRouteProps = PropsWithChildren;
 
 export enum TaskStatus {
@@ -37,8 +47,8 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const TIMELINES = ["Кварталы", "Месяцы", "Недели"];
 
-export const BASE_URL = 'https://qwuipss.space/ticket-tracer-api/';
+export const BASE_URL = 'https://qwuipss.space/ticket-tracer-api';
 
 export const FILTER = ['all', 'todo', 'inwork', 'done'];
 
-export type { ITask, IUserResponse, ProtectedRouteProps, AuthContextType };
+export type { ITask, IUserResponse, ITaskInfoCardProps, IErrorPopupProps, ProtectedRouteProps, AuthContextType };
