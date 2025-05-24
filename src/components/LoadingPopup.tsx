@@ -1,11 +1,14 @@
 const LoadingPopup = () => {
     
     return (
-        <div className="util-popup-substrate">
-            <div className="util-popup">
-                <h1 className="util-message">Загрузка...</h1>
+        <>
+            <div className="util-popup-substrate"></div>
+            <div className="loader">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
             </div>
-        </div>
+        </>
     );
 };
 

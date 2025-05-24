@@ -30,6 +30,8 @@ const Header = () => {
 
     const [isLogoutMenuOpen, setLogoutMenuOpen] = useState(false);
 
+    const [isProjectsMenuOpen, setProjectsMenuOpen] = useState(false);
+
     const handleCloseUtilModal = () => {
         setRequestError(false);
     };
@@ -63,20 +65,43 @@ const Header = () => {
             <nav className="navbar">
                 <div className="">
                     <ul className="nav-links">
-                        <li key="projects">
-                            <a href="#">
+                        <li 
+                            key="projects" 
+                            onClick={() => {
+                                if (isProjectsMenuOpen) { 
+                                    setProjectsMenuOpen(false);
+                                } else {
+                                    setProjectsMenuOpen(true);
+                                }
+                            }}>
+                            <p>
                                 Проекты<img src="../imgs/arrow.svg"></img>
-                            </a>
+                            </p>
+                            {isProjectsMenuOpen && 
+                                <div className="project-logout-menu">
+                                    <p className="to-current-project">Текущий проект</p>
+                                    <p 
+                                        className="to-project-list"
+                                        onClick={() => handleLogout()}>
+                                        Список проектов
+                                    </p>
+                                    <p 
+                                        className="to-project-list"
+                                        onClick={() => handleLogout()}>
+                                        Создать проект
+                                    </p>
+                                </div>
+                            }
                         </li>
                         <li key="my-tasks">
-                            <a href="#">
+                            <p>
                                 Мои задачи<img src="../imgs/arrow.svg"></img>
-                            </a>
+                            </p>
                         </li>
                         <li key="more">
-                            <a href="#">
+                            <p>
                                 Ещё<img src="../imgs/arrow.svg"></img>
-                            </a>
+                            </p>
                         </li>
                         <li key="create">
                             <button className="create-btn">Создать</button>
@@ -94,7 +119,9 @@ const Header = () => {
                         <img src="../imgs/settings.svg"></img>
                     </div>
                     <div className="logout-menu">
-                        <button className="profile-button" onClick={() => {
+                        <button 
+                            className="profile-button" 
+                            onClick={() => {
                                 if (isLogoutMenuOpen) { 
                                     setLogoutMenuOpen(false);
                                 } else {

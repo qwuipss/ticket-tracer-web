@@ -29,16 +29,20 @@ const router = createBrowserRouter([
                         path: "dashboard",
                         element: <Dashboard />,
                         children: [
-                            { path: "calendar", element: <Calendar/> },
-                            { path: "gantt", element: <Timeline/> },
-                            { path: "board", element: <Board/> },
+                            { path: "calendar", element: <Calendar /> },
+                            { path: "gantt", element: <Timeline /> },
+                            { path: "board", element: <Board /> },
                             { path: "summary", element: <Summary /> },
-                            { index: true, element: <Navigate to="board" replace /> }
+                            { path: "project-list", element: <Summary /> },
+                            {
+                                index: true,
+                                element: <Navigate to="board" replace />,
+                            },
                         ],
                     },
                 ],
             },
-            { index: true, element: <Navigate to="/auth" replace /> },
+            { index: true, element: <Navigate to="/login" replace /> },
         ],
     },
     {

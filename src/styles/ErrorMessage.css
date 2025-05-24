@@ -12,6 +12,10 @@
     margin-bottom: 3vh;
 }
 
+.animation-container {
+    display: flex;
+}
+
 .error-header {
     font-family: Unbounded;
     font-size: 3vh;

@@ -104,7 +104,16 @@ const Login = () => {
                         src="../imgs/logo.svg"
                         alt="Логотип"
                     />
-                    <h1 className="error-header">Загрузка...</h1>
+                    <div className="animation-container">
+                        <h1 className="error-header">
+                            Загрузка
+                        </h1>
+                        <div className="login-loader">
+                            <div className="login-dot"></div>
+                            <div className="login-dot"></div>
+                            <div className="login-dot"></div>
+                        </div>
+                    </div>
                 </main>
             </>
         );
