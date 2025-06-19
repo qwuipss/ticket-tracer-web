@@ -12,69 +12,48 @@ import Timeline from "./components/Timeline";
 import Board from "./components/Board";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthLayout from "./components/AuthLayout";
+import ErrorMessage from "./components/ErrorMessage";
 import Summary from "./components/Summary";
 import ProjectList from "./components/ProjectList";
 import ProjectCreate from "./components/ProjectCreate";
 
-const router = createBrowserRouter(
-    [
-        {
-            path: "/",
-            element: <AuthLayout />,
-            children: [
-                {
-                    index: true,
-                    element: <Navigate to="login" replace />,
-                },
-                {
-                    path: "login",
-                    element: <Login />,
-                },
-                {
-                    path: "auth",
-                    element: <Auth />,
-                },
-                {
-                    path: "app",
-                    element: <ProtectedRoute />,
-                    children: [
-                        {
-                            path: "dashboard",
-                            element: <Dashboard />,
-                            children: [
-                                {
-                                    index: true,
-                                    element: (
-                                        <Navigate to="project-list" replace />
-                                    ),
-                                },
-                                { path: "calendar", element: <Calendar /> },
-                                { path: "gantt", element: <Timeline /> },
-                                { path: "board/:id", element: <Board /> },
-                                { path: "summary", element: <Summary /> },
-                                {
-                                    path: "project-list",
-                                    element: <ProjectList />,
-                                },
-                                {
-                                    path: "project-create",
-                                    element: <ProjectCreate />,
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            path: "*",
-            element: <Navigate to="/" replace />,
-        },
-    ],
+const router = createBrowserRouter([
     {
-        basename: "/ticket-tracer-web",
-    }
-);
+        path: "/",
+        element: <AuthLayout />,
+        children: [
+            { path: "auth", element: <Auth /> },
+            { path: "login", element: <Login /> },
+            {
+                path: "app",
+                element: <ProtectedRoute />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <Dashboard />,
+                        children: [
+                            { path: "calendar", element: <Calendar /> },
+                            { path: "gantt", element: <Timeline /> },
+                            { path: "board/:id", element: <Board /> },
+                            { path: "summary", element: <Summary /> },
+                            { path: "project-list", element: <ProjectList /> },
+                            { path: "project-create", element: <ProjectCreate />},
+                            {
+                                index: true,
+                                element: <Navigate to="project-list" replace />,
+                            },
+                        ],
+                    },
+                ],
+            },
+            { index: true, element: <Navigate to="/login" replace /> },
+        ],
+    },
+    {
+        path: "*",
+        element: <ErrorMessage />,
+    },
+]);
 
 function App() {
     return <RouterProvider router={router} />;

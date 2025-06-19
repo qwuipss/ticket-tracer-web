@@ -75,7 +75,7 @@ const Header = () => {
                                 }
                             }}>
                             <p>
-                                Проекты<img src="../imgs/arrow.svg"></img>
+                                Проекты<img src="/imgs/arrow.svg"></img>
                             </p>
                             {isProjectsMenuOpen && 
                                 <div className="project-logout-menu">
@@ -96,12 +96,12 @@ const Header = () => {
                         </li>
                         <li key="my-tasks">
                             <p>
-                                Мои задачи<img src="../imgs/arrow.svg"></img>
+                                Мои задачи<img src="/imgs/arrow.svg"></img>
                             </p>
                         </li>
                         <li key="more">
                             <p>
-                                Ещё<img src="../imgs/arrow.svg"></img>
+                                Ещё<img src="/imgs/arrow.svg"></img>
                             </p>
                         </li>
                         <li key="create">
@@ -116,8 +116,8 @@ const Header = () => {
                         placeholder="Поиск"
                     ></input>
                     <div className="nav-buttons">
-                        <img src="../imgs/help.svg"></img>
-                        <img src="../imgs/settings.svg"></img>
+                        <img src="/imgs/help.svg"></img>
+                        <img src="/imgs/settings.svg"></img>
                     </div>
                     <div className="logout-menu">
                         <button 
@@ -131,7 +131,7 @@ const Header = () => {
                             }}>
                             <img
                                 className="nav-photo"
-                                src="../imgs/user.svg"
+                                src="/imgs/user.svg"
                                 alt="User1"
                             ></img>
                         </button>
