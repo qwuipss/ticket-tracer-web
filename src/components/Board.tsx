@@ -89,10 +89,10 @@ const Board = () => {
                     <div className="project-header">
                         <h1>{board.title}</h1>
                         <button className="save-btn">
-                            <img src="/imgs/save.svg" alt="Сохранить" />Сохранить
+                            <img src="./imgs/save.svg" alt="Сохранить" />Сохранить
                         </button>
                         <button className="share-btn">
-                            <img src="/imgs/share.svg" alt="Поделиться" />Поделиться
+                            <img src="./imgs/share.svg" alt="Поделиться" />Поделиться
                         </button>
                     </div>
                 </div>
@@ -132,10 +132,10 @@ const Board = () => {
                                         <div className="task-info">
                                             <img
                                                 className="task-card-photo"
-                                                src="/imgs/user.svg"
+                                                src="./imgs/user.svg"
                                                 alt="User"
                                             />
-                                            <img className="type-flag" src={`/imgs/flag-${task.type}.svg`}></img>
+                                            <img className="type-flag" src={`./imgs/flag-${task.type}.svg`}></img>
                                         </div>
                                     </div>
                                 ))}

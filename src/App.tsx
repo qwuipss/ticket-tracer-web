@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Calendar from "./components/Calendar";
 import Timeline from "./components/Timeline";
 import Board from "./components/Board";
+import ProtectedRoute from "./components/ProtectedRoute";
 import AuthLayout from "./components/AuthLayout";
 import Summary from "./components/Summary";
 import ProjectList from "./components/ProjectList";
@@ -34,26 +35,32 @@ const router = createBrowserRouter(
                     element: <Auth />,
                 },
                 {
-                    path: "dashboard",
-                    element: <Dashboard />,
+                    path: "app",
+                    element: <ProtectedRoute />,
                     children: [
                         {
-                            index: true,
-                            element: (
-                                <Navigate to="project-list" replace />
-                            ),
-                        },
-                        { path: "calendar", element: <Calendar /> },
-                        { path: "gantt", element: <Timeline /> },
-                        { path: "board/:id", element: <Board /> },
-                        { path: "summary", element: <Summary /> },
-                        {
-                            path: "project-list",
-                            element: <ProjectList />,
-                        },
-                        {
-                            path: "project-create",
-                            element: <ProjectCreate />,
+                            path: "dashboard",
+                            element: <Dashboard />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: (
+                                        <Navigate to="project-list" replace />
+                                    ),
+                                },
+                                { path: "calendar", element: <Calendar /> },
+                                { path: "gantt", element: <Timeline /> },
+                                { path: "board/:id", element: <Board /> },
+                                { path: "summary", element: <Summary /> },
+                                {
+                                    path: "project-list",
+                                    element: <ProjectList />,
+                                },
+                                {
+                                    path: "project-create",
+                                    element: <ProjectCreate />,
+                                },
+                            ],
                         },
                     ],
                 },

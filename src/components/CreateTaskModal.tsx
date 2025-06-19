@@ -74,12 +74,12 @@ const CreateTaskModal = ({
                     <div className="modal-header">
                         <h2 className="modal-label">Создать задачу</h2>
                         <button type="submit" className="save-task-btn">
-                            <img src="/imgs/save.svg" alt="Сохранить" />
+                            <img src="./imgs/save.svg" alt="Сохранить" />
                             Сохранить
                         </button>
                         <img
                             className="close-task-create"
-                            src="/imgs/cross.svg"
+                            src="./imgs/cross.svg"
                             onClick={onClose}
                         ></img>
                     </div>
@@ -122,7 +122,7 @@ const CreateTaskModal = ({
                                 <option value={3}>Багфикс</option>
                             </select>
                             <img
-                                src={`/imgs/flag-${taskData.type}.svg`}
+                                src={`./imgs/flag-${taskData.type}.svg`}
                                 alt="Тип задачи"
                                 className="type-flag-preview"
                             />
