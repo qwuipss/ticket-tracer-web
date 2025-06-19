@@ -130,10 +130,10 @@ const Summary = () => {
                                 </tr>
                             </thead>
                             <tbody className='task-table-body'>
-                                {currentTasks.map(({id, name, description, status, type}) => (
+                                {currentTasks.map(({id, title, description, status, type}) => (
                                     <tr key={id}>
                                         <td className='type-column'><img src={`/imgs/flag-${type}.svg`}></img></td>
-                                        <td>{name}</td>
+                                        <td>{title}</td>
                                         <td><span className="status-badge">{status}</span></td>
                                         <td><div className='user-column'><img src="/imgs/user.svg"></img>@vanya</div></td>
                                         <td className='comment-column'>{description}</td>

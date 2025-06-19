@@ -1,0 +1,97 @@
+.project-list {
+    margin: 2vh 43px 10px 14vw;
+}
+
+.project-list-wrapper {
+    max-width: 400px;
+    border-radius: 24px;
+    background-color: rgba(83, 220, 251, 0.10);
+    box-shadow: 4px 4px 9.8px 0px rgba(0, 0, 0, 0.16), 0px 0px 10.8px 0px #53DCFB inset;
+    padding: 30px 50px;
+    margin-top: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-title {
+    font-family: Unbounded;
+    margin-bottom: 24px;
+    font-size: 24px;
+    background-color: white;
+    border: #000 solid 1px;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.project-title:last-child {
+    margin-bottom: 0;
+}
+
+.project-title:hover {
+    background-color: rgb(16, 23, 40, 0.2);
+    border: #000 solid 1px;
+}
+
+.boards-wrapper {
+    border-radius: 24px;
+    background-color: rgba(83, 220, 251, 0.10);
+    box-shadow: 4px 4px 9.8px 0px rgba(0, 0, 0, 0.16), 0px 0px 10.8px 0px #53DCFB inset;
+    padding: 30px 50px;
+    font-family: Nunito Sans;
+}
+
+.boards-project-title {
+    font-family: Unbounded;
+    margin-bottom: 24px;
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.boards-title {
+    font-size: 24px;
+}
+
+.boards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.board-item {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.boards-list-button {
+    border: #000 solid 1px;
+    background-color: white;
+    height: 40px;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.boards-list-button:hover {
+    background-color: rgba(83, 220, 251, 0.10);
+}
+
+.board-create-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.back {
+    margin-left: 20px;
+}
+
+.boards-list a {
+    text-decoration: none;
+    color: #000;
+}

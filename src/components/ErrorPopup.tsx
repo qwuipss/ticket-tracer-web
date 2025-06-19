@@ -6,7 +6,7 @@ const ErrorPopup = ({ onClose }: IErrorPopupProps) => {
         <div>
             <div className="util-popup-substrate"></div>
             <div className="util-popup">
-                <h1 className="util-message">Ошибка запроса. Попробуйте позже.</h1>
+                <h1 className="util-message">Ошибка запроса<br></br> Попробуйте позже</h1>
                 <img
                     className="close"
                     src="/imgs/cross.svg"

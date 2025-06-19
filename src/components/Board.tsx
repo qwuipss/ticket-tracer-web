@@ -1,13 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskInfoCard from "./TaskInfoCard";
-import { ITask, TaskStatus, TaskGroups } from "../types/Types.tsx";
+import { ITask, TaskStatus, TaskGroups, IBoardProps, BASE_URL } from "../types/Types.tsx";
 import { tasks } from "../mock/Mock";
+import { useParams } from "react-router-dom";
+import LoadingPopup from "./LoadingPopup.tsx";
+import axios from "axios";
+import CreateTaskModal from "./CreateTaskModal.tsx";
 
 const Board = () => {
+    const { id } = useParams<{ id: string }>();
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedTask, setSelectedTask] = useState(tasks[0]);
+    const [isCreateWindowOpened, setCreateWindow] = useState(false);
     const [currentFilter, setCurrentFilter] = useState<TaskStatus>(TaskStatus.NoFilter);
-    const [tasksState, setTasksState] = useState(tasks);    
+    const [tasksState, setTasksState] = useState(tasks);  
+    const [board, setBoard] = useState<IBoardProps | null>(null);
+
+    const handleTaskCreated = (newTask: ITask) => {
+        setTasksState(prev => [...prev, newTask]);
+    };
+
+    useEffect(() => {
+        const controller = new AbortController();
+
+        const getBoardById = async () => {
+            try {
+                const response = await axios.get(
+                    `${BASE_URL}/boards/${id}?id=${id}`,
+                    {
+                        headers: { 'Content-Type': 'application/json' },
+                        withCredentials: true,
+                        signal: controller.signal
+                    }
+                );
+                setBoard(response.data);
+            } catch (error) {
+                if (!axios.isCancel(error)) {
+                    console.error('Ошибка загрузки доски:', error);
+                }
+            }
+        };
+
+        if (id) getBoardById();
+
+        return () => controller.abort();
+    }, [id]);
+
+    if (!board) {
+        return <LoadingPopup />;
+    }
 
     const handleOpenModal = (task: ITask) => {
         setSelectedTask(task);
@@ -37,84 +79,97 @@ const Board = () => {
         ? [TaskStatus.Todo, TaskStatus.InProgress, TaskStatus.Done]
         : [currentFilter];
 
-    return (
-        <main className="board">
-            <div className="project-settings">
-                <div className="project-header">
-                    <h1>Alfaproject</h1>
-                    <button className="save-btn">
-                        <img src="/imgs/save.svg" alt="Сохранить" />Сохранить
-                    </button>
-                    <button className="share-btn">
-                        <img src="/imgs/share.svg" alt="Поделиться" />Поделиться
-                    </button>
-                </div>
-            </div>
-            
-            <div className="filter">
-                <label>Фильтр</label>
-                <select 
-                    id="filter" 
-                    value={currentFilter}
-                    onChange={(e) => setCurrentFilter(e.target.value as TaskStatus)}
-                >
-                    {Object.values(TaskStatus).map(status => (
-                        <option key={status} value={status}>
-                            {status}
-                        </option>
-                    ))}
-                </select>
-                <input
-                    className="filter-search-bar"
-                    type="text"
-                    placeholder="Поиск"
-                />
-            </div>
 
-            <div className="task-board">
-                {visibleColumns.map(column => (
-                    <div className="task-column" key={column}>
-                        <h2>{column}</h2>
-                        <div className="task-list">
-                            {filteredTasks[column].map((task: ITask) => (
-                                <div
-                                    className="task-card"
-                                    key={task.id}
-                                    onClick={() => handleOpenModal(task)}
-                                >
-                                    <p className="task-name-table">{task.name}</p>
-                                    <div className="task-info">
-                                        <img
-                                            className="task-card-photo"
-                                            src="/imgs/user.svg"
-                                            alt="User"
-                                        />
-                                        <img className="type-flag" src={`/imgs/flag-${task.type}.svg`}></img>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        {column === "К выполнению" && (
-                            <button 
-                                className='create-new-task-btn' 
-                                onClick={() => handleOpenModal(tasks[0])}
-                            >
-                                + Создать
-                            </button>
-                        )}
+    console.log(tasksState);
+
+    if(id) {   
+        return (
+            <main className="board">
+                <div className="project-settings">
+                    <div className="project-header">
+                        <h1>{board.title}</h1>
+                        <button className="save-btn">
+                            <img src="/imgs/save.svg" alt="Сохранить" />Сохранить
+                        </button>
+                        <button className="share-btn">
+                            <img src="/imgs/share.svg" alt="Поделиться" />Поделиться
+                        </button>
                     </div>
-                ))}
-            </div>
+                </div>
+                
+                <div className="filter">
+                    <label>Фильтр</label>
+                    <select 
+                        id="filter" 
+                        value={currentFilter}
+                        onChange={(e) => setCurrentFilter(e.target.value as TaskStatus)}
+                    >
+                        {Object.values(TaskStatus).map(status => (
+                            <option key={status} value={status}>
+                                {status}
+                            </option>
+                        ))}
+                    </select>
+                    <input
+                        className="filter-search-bar"
+                        type="text"
+                        placeholder="Поиск"
+                    />
+                </div>
 
-            {isModalOpen && (
-                <TaskInfoCard 
-                    task={selectedTask} 
-                    onClose={handleCloseModal}
-                    onSave={handleSaveTask}
-                />
-            )}
-        </main>
-    );
+                <div className="task-board">
+                    {visibleColumns.map(column => (
+                        <div className="task-column" key={column}>
+                            <h2>{column}</h2>
+                            <div className="task-list">
+                                {filteredTasks[column].map((task: ITask) => (
+                                    <div
+                                        className="task-card"
+                                        key={task.id}
+                                        onClick={() => handleOpenModal(task)}
+                                    >
+                                        <p className="task-name-table">{task.title}</p>
+                                        <div className="task-info">
+                                            <img
+                                                className="task-card-photo"
+                                                src="/imgs/user.svg"
+                                                alt="User"
+                                            />
+                                            <img className="type-flag" src={`/imgs/flag-${task.type}.svg`}></img>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            {column === "К выполнению" && (
+                                <button 
+                                    className='create-new-task-btn' 
+                                    onClick={() => setCreateWindow(true)}
+                                >
+                                    + Создать
+                                </button>
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                {isModalOpen && (
+                    <TaskInfoCard 
+                        task={selectedTask} 
+                        onClose={handleCloseModal}
+                        onSave={handleSaveTask}
+                    />
+                )}
+
+                {isCreateWindowOpened && (
+                    <CreateTaskModal 
+                    boardId={id}
+                    onClose={() => setCreateWindow(false)}
+                    onTaskCreated={handleTaskCreated}
+                    />
+                )}
+            </main>
+        );
+    }
 };
 
 export default Board;

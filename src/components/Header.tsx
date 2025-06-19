@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -79,17 +79,18 @@ const Header = () => {
                             </p>
                             {isProjectsMenuOpen && 
                                 <div className="project-logout-menu">
-                                    <p className="to-current-project">Текущий проект</p>
-                                    <p 
+                                    <NavLink 
+                                        key="to-project-list"
                                         className="to-project-list"
-                                        onClick={() => handleLogout()}>
+                                        to="project-list">
                                         Список проектов
-                                    </p>
-                                    <p 
-                                        className="to-project-list"
-                                        onClick={() => handleLogout()}>
+                                    </NavLink>
+                                    <NavLink 
+                                        key="to-project-create"
+                                        className="to-project-create"
+                                        to="project-create">
                                         Создать проект
-                                    </p>
+                                    </NavLink>
                                 </div>
                             }
                         </li>

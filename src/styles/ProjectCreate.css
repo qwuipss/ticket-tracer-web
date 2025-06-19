@@ -1,0 +1,35 @@
+.project-title-input {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #53DCFB;
+    background: #FFF;
+    padding: 8px 12px;
+    font-family: Nunito Sans;
+    font-size: 16px;
+}
+
+.project-title-input:hover {
+    border-color: #000;
+}
+
+.project-submit {
+    margin-top: 30px;
+    padding: 0 1vh;
+    background-color: #34C6CD;
+    justify-self: center;
+    font-size: 1.3vh;
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.1vh;
+    border: none;
+    border-radius: 0.5vh;
+    height: 3vh;
+    min-width: 110px;
+    cursor: pointer;
+}
+
+.project-submit:hover {
+    background-color: rgba(83, 220, 251, 0.50);
+}

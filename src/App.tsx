@@ -3,6 +3,7 @@ import {
     Navigate,
     RouterProvider,
 } from "react-router-dom";
+
 import Dashboard from "./components/Dashboard";
 import Auth from "./components/Auth";
 import Login from "./components/Login";
@@ -13,6 +14,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AuthLayout from "./components/AuthLayout";
 import ErrorMessage from "./components/ErrorMessage";
 import Summary from "./components/Summary";
+import ProjectList from "./components/ProjectList";
+import ProjectCreate from "./components/ProjectCreate";
 
 const router = createBrowserRouter([
     {
@@ -31,12 +34,13 @@ const router = createBrowserRouter([
                         children: [
                             { path: "calendar", element: <Calendar /> },
                             { path: "gantt", element: <Timeline /> },
-                            { path: "board", element: <Board /> },
+                            { path: "board/:id", element: <Board /> },
                             { path: "summary", element: <Summary /> },
-                            { path: "project-list", element: <Summary /> },
+                            { path: "project-list", element: <ProjectList /> },
+                            { path: "project-create", element: <ProjectCreate />},
                             {
                                 index: true,
-                                element: <Navigate to="board" replace />,
+                                element: <Navigate to="project-list" replace />,
                             },
                         ],
                     },

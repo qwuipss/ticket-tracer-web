@@ -1,0 +1,89 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: Nunito Sans;
+}
+
+.task-modal {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 600px;
+  max-width: 90%;
+}
+
+.modal-label {
+  margin-top: 0;
+  font-size: 32px;
+  width: 360px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.save-task-btn {
+  background: #98f09b;
+  color: #000;
+  font-size: 16px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.close-task-create {
+  align-self: flex-start;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  margin-left: 35px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 500px;
+  max-width: 500px;
+  max-height: 200px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: Nunito Sans
+}
+
+.type-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.type-flag-preview {
+  width: 24px;
+  height: 24px;
+}

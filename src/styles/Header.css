@@ -62,17 +62,8 @@
     margin-left: 2vw;
 }
 
-.nav-links a {
-    margin-right: 0;
-}
-
 .nav-links img {
     margin-left: 10px
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #000;
 }
 
 .create-btn {
@@ -202,4 +193,19 @@
     width: 180px;
     padding-left: 20px;
     font-family: Nunito Sans;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.project-logout-menu a {
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+}
+
+.project-logout-menu a:hover {
+    color: #34C6CD;
 }

@@ -174,7 +174,7 @@
 .timeunit-header {
     font-weight: 600;
     font-size: 1.5vh;
-    padding-left: 8vw;
+    padding-left: 7vw;
 }
 
 .tasks-header {
@@ -214,7 +214,7 @@
 
 .timeline-index {
     position: absolute;
-    margin-left: 12vh;
+    margin-left: 23vh;
     height: 100%;
 }
 
