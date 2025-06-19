@@ -46,14 +46,16 @@ const router = createBrowserRouter([
                     },
                 ],
             },
-            { index: true, element: <Navigate to="/login" replace /> },
+            { index: true, element: <Navigate to="login" replace /> },
         ],
     },
     {
         path: "*",
         element: <ErrorMessage />,
     },
-]);
+], {
+    basename: "/ticket-tracer-web"
+});
 
 function App() {
     return <RouterProvider router={router} />;

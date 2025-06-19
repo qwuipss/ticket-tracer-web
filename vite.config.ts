@@ -9,6 +9,12 @@ export default defineConfig({
     allowedHosts: [
       'qwujpss.space',
       'localhost', 
-    ]
+    ],
+    proxy: {
+      '/ticket-tracer-web': {
+        target: 'http://localhost:5173',
+        rewrite: (path) => path.replace(/^\/ticket-tracer-web/, '')
+      }
+    }
   },
 })
