@@ -6,9 +6,13 @@ export default defineConfig({
   base: '/ticket-tracer-web/',
   server: {
     host: true,
-    allowedHosts: [
-      'qwujpss.space',
-      'localhost', 
-    ],
+    hmr: {
+      protocol: 'wss',
+      host: 'qwuipss.space'
+    }
   },
+  build: {
+    assetsDir: 'assets',
+    manifest: true
+  }
 })
