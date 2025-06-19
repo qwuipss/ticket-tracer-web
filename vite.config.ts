@@ -12,7 +12,7 @@ export default defineConfig({
     }
   },
   build: {
-    assetsDir: 'assets',
+    assetsDir: 'imgs',
     manifest: true
   }
 })

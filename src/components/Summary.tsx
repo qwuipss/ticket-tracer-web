@@ -46,10 +46,10 @@ const Summary = () => {
                 <div className="project-header">
                     <h1>Alfaproject</h1>
                     <button className="save-btn">
-                        <img src="/imgs/save.svg"></img>Сохранить
+                        <img src={`${import.meta.env.BASE_URL}imgs/save.svg`} />Сохранить
                     </button>
                     <button className="share-btn">
-                        <img src="/imgs/share.svg"></img>Поделиться
+                        <img src={`${import.meta.env.BASE_URL}imgs/share.svg`}></img>Поделиться
                     </button>
                 </div>
             </div>
@@ -108,7 +108,7 @@ const Summary = () => {
                     <div className='team-table'>
                         {userProgress.map(({ email, percent }, index) => (
                             <div className='team-table-row' key={index}>
-                                <div className='table-user-info'><img src="/imgs/user.svg"></img>{email}</div>
+                                <div className='table-user-info'><img src={`${import.meta.env.BASE_URL}imgs/user.svg`}></img>{email}</div>
                                 <div className="progress-container">
                                     <div className="progress" style={{ width: percent + '%' }}></div>
                                 </div>
@@ -132,10 +132,10 @@ const Summary = () => {
                             <tbody className='task-table-body'>
                                 {currentTasks.map(({id, title, description, status, type}) => (
                                     <tr key={id}>
-                                        <td className='type-column'><img src={`/imgs/flag-${type}.svg`}></img></td>
+                                        <td className='type-column'><img src={`${import.meta.env.BASE_URL}imgs/flag-${type}.svg`}></img></td>
                                         <td>{title}</td>
                                         <td><span className="status-badge">{status}</span></td>
-                                        <td><div className='user-column'><img src="/imgs/user.svg"></img>@vanya</div></td>
+                                        <td><div className='user-column'><img src={`${import.meta.env.BASE_URL}imgs/user.svg`}></img>@vanya</div></td>
                                         <td className='comment-column'>{description}</td>
                                     </tr>
                                 ))}

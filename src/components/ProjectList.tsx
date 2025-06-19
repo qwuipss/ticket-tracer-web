@@ -58,7 +58,7 @@ const ProjectList = () => {
 
     return (
         <main className="project-list" key="project-list">
-        <h1>Список проектов</h1>
+        <h1 className="project-list-header">Список проектов</h1>
             <div className="project-list-wrapper">
                 {projects.map((project) => (
                     <div 

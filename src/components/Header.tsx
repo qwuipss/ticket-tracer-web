@@ -131,7 +131,7 @@ const Header = () => {
                             }}>
                             <img
                                 className="nav-photo"
-                                src="../imgs/user.svg"
+                                src={`${import.meta.env.BASE_URL}imgs/user.svg`}
                                 alt="User1"
                             ></img>
                         </button>

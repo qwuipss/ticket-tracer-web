@@ -16,10 +16,10 @@ const Timeline = () => {
                 <div className="timeline-header">
                     <h1>Alfaproject</h1>
                     <button className="save-btn">
-                        <img src="../imgs/save.svg"></img>Сохранить
+                        <img src={`${import.meta.env.BASE_URL}imgs/save.svg`}></img>Сохранить
                     </button>
                     <button className="share-btn">
-                        <img src="../imgs/share.svg"></img>Поделиться
+                        <img src={`${import.meta.env.BASE_URL}imgs/share.svg`}></img>Поделиться
                     </button>
                 </div>
             </div>
@@ -60,7 +60,7 @@ const Timeline = () => {
                         ))}
                     </ul>
                     <button className="add-task-button">
-                        <img src="../imgs/dark_plus.svg"></img>Создать
+                        <img src={`${import.meta.env.BASE_URL}imgs/dark_plus.svg`}></img>Создать
                     </button>
                 </div>
                 <div className="timeline-elements">
@@ -75,7 +75,7 @@ const Timeline = () => {
                     <h2 className="timeunit-header">Апрель - Июнь</h2>
                     <img
                         className="timeline-index"
-                        src="../imgs/timeline_index.svg"
+                        src={`${import.meta.env.BASE_URL}imgs/timeline_index.svg`}
                     ></img>
                     <ul className="timeline-tasks">
                         {tasks.map((task) => (

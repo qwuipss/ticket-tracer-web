@@ -9,7 +9,7 @@ const ErrorPopup = ({ onClose }: IErrorPopupProps) => {
                 <h1 className="util-message">Ошибка запроса<br></br> Попробуйте позже</h1>
                 <img
                     className="close"
-                    src="./imgs/cross.svg"
+                    src={`${import.meta.env.BASE_URL}imgs/cross.svg`}
                     onClick={onClose}
                 ></img>
             </div>

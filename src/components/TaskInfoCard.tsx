@@ -25,7 +25,7 @@ const TaskInfoCard = ({ task, onClose, onSave }: ITaskInfoCardProps) => {
                         <h1 className="task-name">{editedTask.title}</h1>
                         <img
                             className="card-type-flag"
-                            src={`/imgs/flag-${editedTask.type}.svg`}
+                            src={`${import.meta.env.BASE_URL}imgs/flag-${editedTask.type}.svg`}
                             alt="Тип задачи"
                         />
                     </div>
@@ -67,7 +67,7 @@ const TaskInfoCard = ({ task, onClose, onSave }: ITaskInfoCardProps) => {
                                         onClick={() => setIsEditing(true)}
                                     >
                                         <img
-                                            src="/imgs/edit.svg"
+                                            src={`${import.meta.env.BASE_URL}imgs/edit.svg`}
                                             alt="Редактировать"
                                         />
                                     </button>
@@ -85,7 +85,7 @@ const TaskInfoCard = ({ task, onClose, onSave }: ITaskInfoCardProps) => {
 
                     <h2 className="task-comments-header">Комментарии</h2>
                     <div className="comments-section">
-                        <img className="user-photo" src="/imgs/user.svg"></img>
+                        <img className="user-photo" src={`${import.meta.env.BASE_URL}imgs/user.svg`}></img>
                         <textarea
                             className="task-comments"
                             placeholder="Написать комментарий..."
@@ -95,14 +95,14 @@ const TaskInfoCard = ({ task, onClose, onSave }: ITaskInfoCardProps) => {
                 <div className="card-side-info">
                     <div className="task-card-btns">
                         <button className="share-button">
-                            <img src="/imgs/share.svg"></img>Поделиться
+                            <img src={`${import.meta.env.BASE_URL}imgs/share.svg`}></img>Поделиться
                         </button>
                         <button className="action-button">
-                            <img src="/imgs/ellipsis.svg"></img>Действия
+                            <img src={`${import.meta.env.BASE_URL}imgs/ellipsis.svg`}></img>Действия
                         </button>
                         <img
                             className="close"
-                            src="/imgs/cross.svg"
+                            src={`${import.meta.env.BASE_URL}imgs/cross.svg`}
                             onClick={onClose}
                         ></img>
                     </div>
@@ -120,7 +120,7 @@ const TaskInfoCard = ({ task, onClose, onSave }: ITaskInfoCardProps) => {
                             <div className="author-info">
                                 <img
                                     className="author-photo"
-                                    src="/imgs/user.svg"
+                                    src={`${import.meta.env.BASE_URL}imgs/user.svg`}
                                 ></img>
                                 <p className="author-id">@vanya</p>
                             </div>
@@ -130,7 +130,7 @@ const TaskInfoCard = ({ task, onClose, onSave }: ITaskInfoCardProps) => {
                             <div className="doer-info">
                                 <img
                                     className="doer-photo"
-                                    src="/imgs/user.svg"
+                                    src={`${import.meta.env.BASE_URL}imgs/user.svg`}
                                 ></img>
                                 <p className="doer-id">@petya</p>
                             </div>
