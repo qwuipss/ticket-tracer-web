@@ -190,7 +190,7 @@
     left: 14.8vw;
     background: #FFF;
     box-shadow: 1px 1px 5.3px 0px rgba(0, 0, 0, 0.18);
-    width: 180px;
+    width: 200px;
     padding-left: 20px;
     font-family: Nunito Sans;
     display: flex;
@@ -198,6 +198,7 @@
     gap: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
+    cursor: pointer;
 }
 
 .project-logout-menu a {

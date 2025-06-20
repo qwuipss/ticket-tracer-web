@@ -107,6 +107,7 @@ const TaskInfoCard = ({ task, onClose, onSave }: ITaskInfoCardProps) => {
                         ></img>
                     </div>
                     <select className="card-filter">
+                        <option>{editedTask.status}</option>
                         <option>К выполнению</option>
                         <option>В работе</option>
                         <option>Готово</option>
