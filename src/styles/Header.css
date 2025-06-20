@@ -177,6 +177,7 @@
     width: 100px;
     padding-left: 20px;
     font-family: Nunito Sans;
+    cursor: pointer;
 }
 
 .exit-button {
